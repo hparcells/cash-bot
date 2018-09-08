@@ -38,6 +38,8 @@ exports.onLoad = api => {
                         replacer: null,
                         spaces: 4
                     }).then(() => {
+                        msg.reply(`You successfully paid ${api.client.users.get(recipientID)} **${args[1]}** Cash.`);
+
                         // Logs in console.
                         console.log(colors.green(`${msg.author.username} paid ${api.client.users.get(recipientID).username} ${args[1]} Cash.`));
                     });
