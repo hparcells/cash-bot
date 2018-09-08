@@ -2,6 +2,8 @@ const BotCore = require("reputation-core");
 const colors = require("colors");
 const fs = require("fs");
 
+require('dotenv').config();
+
 let config = Object.assign({
 	modulePath: "modules",
     token: process.env.TOKEN

@@ -20,31 +20,35 @@ exports.onLoad = api => {
                 if(recipientAccount !== undefined) {
                     // Checks if recipient is the user.
                     if(msg.author.id !== api.client.users.get(recipientID).id) {
-                        // Gives cash.
-                        let accountAfter = account.amount - parseInt(args[1], 10);
-                        let recipientAfter = recipientAccount.amount + parseInt(args[1], 10);
+                        // Checks if payment is positive.
+                        if(!parseInt(args[1], 10) < 1) {
+                            let accountAfter = account.amount - parseInt(args[1], 10);
+                            let recipientAfter = recipientAccount.amount + parseInt(args[1], 10);
 
-                        // Set JSON information.
-                        accountDB[msg.author.username.toLowerCase()] = {
-                            "owner": msg.author.id,
-                            "amount": accountAfter
+                            // Set JSON information.
+                            accountDB[msg.author.username.toLowerCase()] = {
+                                "owner": msg.author.id,
+                                "amount": accountAfter
+                            }
+
+                            accountDB[api.client.users.get(recipientID).username.toLowerCase()] = {
+                                "owner": recipientID,
+                                "amount": recipientAfter
+                            }
+
+                            // Writes data to JSON.
+                            fsn.writeJSON("./accounts.json", accountDB, {
+                                replacer: null,
+                                spaces: 4
+                            }).then(() => {
+                                msg.reply(`You successfully paid ${api.client.users.get(recipientID)} **${args[1]}** Cash.`);
+
+                                // Logs in console.
+                                console.log(colors.green(`${msg.author.username} paid ${api.client.users.get(recipientID).username} ${args[1]} Cash.`));
+                            });
+                        }else {
+                            msg.reply("You cannot pay negative numbers nor 0.");
                         }
-
-                        accountDB[api.client.users.get(recipientID).username.toLowerCase()] = {
-                            "owner": recipientID,
-                            "amount": recipientAfter
-                        }
-
-                        // Writes data to JSON.
-                        fsn.writeJSON("./accounts.json", accountDB, {
-                            replacer: null,
-                            spaces: 4
-                        }).then(() => {
-                            msg.reply(`You successfully paid ${api.client.users.get(recipientID)} **${args[1]}** Cash.`);
-
-                            // Logs in console.
-                            console.log(colors.green(`${msg.author.username} paid ${api.client.users.get(recipientID).username} ${args[1]} Cash.`));
-                        });
                     }else {
                         msg.reply("You can not pay yourself.")
                     }
