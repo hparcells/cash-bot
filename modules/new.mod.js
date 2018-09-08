@@ -16,13 +16,13 @@ exports.onLoad = api => {
                     "amount": 10
                 }
 
-                // Writes Data to JSON.
+                // Writes data to JSON.
                 fsn.writeJSON("./accounts.json", accountDB, {
                     replacer: null,
                     spaces: 4
                 }).then(() => {
                     // Sends a message to the user.
-                    msg.reply("You have successfully created your new account. You have been given **10 Betcoins** to start with.");
+                    msg.reply("You have successfully created your new account. You have been given **10 Cash** to start with.");
 
                     // Logs in console.
                     console.log(colors.green(`${msg.author.username} created a new account.`));
