@@ -7,3 +7,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 ### Additions
 - Ability to create an account and see your balance.
+- Ability to pay other people.
+- Ability to claim 20 cash everyday.
