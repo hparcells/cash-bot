@@ -30,16 +30,19 @@ exports.onLoad = api => {
                         spaces: 4
                     });
 
+                    // Logs in console.
+                    console.log(colors.green(`${msg.author.username} used the daily command and got their daily cash.`));
+
                     setTimeout(() => canClaim = true, 86400000);
                 }else {
-                    msg.reply(`You can not claim your daily cash. Wait .`);
+                    msg.reply(`You can not claim your daily cash. Please wait.`);
+
+                    // Logs in console.
+                    console.log(colors.green(`${msg.author.username} used the daily command and didn't get their daily cash.`));
                 }
             }else {
                 msg.reply("You do not have an account, use `$new` to create a new account.");
             }
         });
-
-        // Logs in console.
-        console.log(colors.green(`${msg.author.username} used the daily command and got their daily cash.`));
     })
 };
