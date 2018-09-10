@@ -3,8 +3,6 @@ const fsn = require("fs-nextra");
 
 exports.id = "daily";
 
-let canClaim = true;
-
 exports.onLoad = api => {
     api.commands.add("daily", (msg) => {        
         fsn.readJSON("./accounts.json").then((accountDB) => {
@@ -13,15 +11,14 @@ exports.onLoad = api => {
             // Checks if user account exists.
             if(account !== undefined) {
                 // Checks if the time is right to claim.
-                if(canClaim) {
-                    canClaim = false;
-
+                if(account.lastClaim + 86400000 === Date.now() || account.lastClaim === undefined) {
                     // Get cash.
-                    msg.reply("You claimed your daily 20 cash. You can get your next daily cash in 24 hours.");
+                    msg.reply("You claimed your daily **20 Cash**. You can get your next daily cash in 24 hours.");
                     let amount = account.amount + 20;
                     accountDB[msg.author.username.toLowerCase()] = {
                         "owner": msg.author.id,
-                        "amount": amount
+                        "amount": amount,
+                        "lastClaim": parseInt(Date.now())
                     }
 
                     // Writes data to JSON.
@@ -32,10 +29,13 @@ exports.onLoad = api => {
 
                     // Logs in console.
                     console.log(colors.green(`${msg.author.username} used the daily command and got their daily cash.`));
-
-                    setTimeout(() => canClaim = true, 86400000);
                 }else {
-                    msg.reply(`You can not claim your daily cash. Please wait.`);
+                    let timeLeft = (account.lastClaim + 86400000) - parseInt(Date.now());
+                    let seconds = parseInt((timeLeft / 1000) % 60);
+                    let minutes = parseInt((timeLeft / (1000 * 60)) % 60);
+                    let hours = parseInt((timeLeft / (1000 * 60 * 60)) % 24);
+
+                    msg.reply(`You can not claim your daily cash. Please wait ${hours} hours, ${minutes} minutes, and ${seconds} seconds, and then try again.`);
 
                     // Logs in console.
                     console.log(colors.green(`${msg.author.username} used the daily command and didn't get their daily cash.`));
