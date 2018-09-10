@@ -11,7 +11,7 @@ exports.onLoad = api => {
             // Checks if user account exists.
             if(account !== undefined) {
                 // Checks if the time is right to claim.
-                if(account.lastClaim + 86400000 === Date.now() || account.lastClaim === undefined) {
+                if(account.lastClaim + 86400000 <= parseInt(Date.now()) || account.lastClaim === undefined) {
                     // Get cash.
                     msg.reply("You claimed your daily **20 Cash**. You can get your next daily cash in 24 hours.");
                     let amount = account.amount + 20;
