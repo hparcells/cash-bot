@@ -53,10 +53,10 @@ exports.onLoad = api => {
                     spaces: 4
                 }).then(() => {
                     // Send message.
-                    msg.reply(`You won the 50/50 and lost **${bet} Cash**`);
+                    msg.reply(`You lost the 50/50 and lost **${bet} Cash**`);
 
                     // Logs in console.
-                    console.log(colors.green(`${msg.author.username} used the 5050 command and won.`));
+                    console.log(colors.green(`${msg.author.username} used the 5050 command and lost.`));
                 });
             }
         });
