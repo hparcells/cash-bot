@@ -8,4 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Additions
 - Ability to create an account and see your balance.
 - Ability to pay other people.
-- Ability to claim 20 cash everyday.
+- Ability to claim 20 Cash everyday.
+- Ability to delete your account.
+- Ability to gamble using the following commands:
+    - fiftyfifty
