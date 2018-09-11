@@ -54,9 +54,15 @@ exports.onLoad = api => {
                     }
                 }else {
                     msg.reply(`${api.client.users.get(recipientID).username} does not have an account.`);
+
+                    // Logs in console.
+                    console.log(colors.red(`${api.client.users.get(recipientID).username} didn't have an account to recieve a payment from ${msg.author.username}.`));
                 }
             }else {
                 msg.reply("You do not have an account, use `$new` to create a new account.");
+
+                // Logs in console.
+                console.log(colors.red(`${msg.author.username} didn't have an account to run the pay command.`));
             }
         });
     })

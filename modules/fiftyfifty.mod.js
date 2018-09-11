@@ -42,7 +42,7 @@ exports.onLoad = api => {
                                 msg.reply(`You won the 50/50 and got **${bet} Cash**`);
     
                                 // Logs in console.
-                                console.log(colors.green(`${msg.author.username} used the 5050 command and won.`));
+                                console.log(colors.green(`${msg.author.username} used the fiftyfifty command and won.`));
                             });
                         }else {
                             let accountAfter = account.amount - bet;
@@ -63,17 +63,26 @@ exports.onLoad = api => {
                                 msg.reply(`You lost the 50/50 and lost **${bet} Cash**`);
     
                                 // Logs in console.
-                                console.log(colors.green(`${msg.author.username} used the 5050 command and lost.`));
+                                console.log(colors.green(`${msg.author.username} used the fiftyfifty command and lost.`));
                             });
                         }
                     }else {
                         msg.reply("You do not have enough Cash for that action.");
+
+                        // Logs in console.
+                        console.log(colors.red(`${msg.author.username} didn't have enough Cash to run the fiftyfifty command.`));
                     }
                 }else {
-                    msg.reply("You cannot bet negative numbers nor 0.");
+                    msg.reply("You cannot bet negative numbers nor zero.");
+
+                    // Logs in console.
+                    console.log(colors.red(`${msg.author.username} gave a negative number or zero for the fiftyfifty command.`));
                 }
             }else {
                 msg.reply("You do not have an account, use `$new` to create a new account.");
+
+                // Logs in console.
+                console.log(colors.red(`${msg.author.username} didn't have an account to run the fiftyfifty command.`));
             }
         });
     })

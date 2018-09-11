@@ -35,7 +35,7 @@ exports.onLoad = api => {
                 msg.reply("You already have an account.");
 
                 // Logs in console.
-                console.log(colors.red(`${msg.author.username} couldn't create a new account.`));
+                console.log(colors.red(`${msg.author.username} couldn't create a new account because they already have an account.`));
             }
         });
     })

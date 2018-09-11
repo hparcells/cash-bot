@@ -42,6 +42,9 @@ exports.onLoad = api => {
                 }
             }else {
                 msg.reply("You do not have an account, use `$new` to create a new account.");
+
+                // Logs in console.
+                console.log(colors.red(`${msg.author.username} didn't have an account to run the daily command.`));
             }
         });
     })
