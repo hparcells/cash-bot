@@ -11,6 +11,8 @@ exports.onLoad = api => {
         recipientID = recipientID.replace("@", "");
         recipientID = recipientID.replace(">", "");
 
+        let amount = parseInt(args[1]);
+
         fsn.readJSON("./accounts.json").then((accountDB) => {
             let account = accountDB[msg.author.username.toLowerCase()];
             let recipientAccount = accountDB[api.client.users.get(recipientID).username.toLowerCase()];
@@ -21,33 +23,41 @@ exports.onLoad = api => {
                     // Checks if recipient is the user.
                     if(msg.author.id !== api.client.users.get(recipientID).id) {
                         // Checks if payment is positive.
-                        if(!parseInt(args[1], 10) < 1) {
-                            let accountAfter = account.amount - parseInt(args[1], 10);
-                            let recipientAfter = recipientAccount.amount + parseInt(args[1], 10);
-
-                            // Set JSON information.
-                            accountDB[msg.author.username.toLowerCase()] = {
-                                "owner": msg.author.id,
-                                "amount": accountAfter
-                            }
-
-                            accountDB[api.client.users.get(recipientID).username.toLowerCase()] = {
-                                "owner": recipientID,
-                                "amount": recipientAfter
-                            }
-
-                            // Writes data to JSON.
-                            fsn.writeJSON("./accounts.json", accountDB, {
-                                replacer: null,
-                                spaces: 4
-                            }).then(() => {
-                                msg.reply(`You successfully paid ${api.client.users.get(recipientID)} **${args[1]} Cash**.`);
+                        if(amount > 0 && amount !== undefined) {
+                            // Checks if user has enough money.
+                            if(amount <= account.amount) {
+                                let accountAfter = account.amount - amount;
+                                let recipientAfter = recipientAccount.amount + amount;
+    
+                                // Set JSON information.
+                                accountDB[msg.author.username.toLowerCase()] = {
+                                    "owner": msg.author.id,
+                                    "amount": accountAfter
+                                }
+    
+                                accountDB[api.client.users.get(recipientID).username.toLowerCase()] = {
+                                    "owner": recipientID,
+                                    "amount": recipientAfter
+                                }
+    
+                                // Writes data to JSON.
+                                fsn.writeJSON("./accounts.json", accountDB, {
+                                    replacer: null,
+                                    spaces: 4
+                                }).then(() => {
+                                    msg.reply(`You successfully paid ${api.client.users.get(recipientID)} **${args[1]} Cash**.`);
+    
+                                    // Logs in console.
+                                    console.log(colors.green(`${msg.author.username} paid ${api.client.users.get(recipientID).username} ${args[1]} Cash.`));
+                                });
+                            }else {
+                                msg.reply("You do not have enough Cash for that action.");
 
                                 // Logs in console.
-                                console.log(colors.green(`${msg.author.username} paid ${api.client.users.get(recipientID).username} ${args[1]} Cash.`));
-                            });
+                                console.log(colors.red(`${msg.author.username} didn't have enough Cash to run the pay command.`));
+                            }
                         }else {
-                            msg.reply("You cannot pay negative numbers nor 0.");
+                            msg.reply("You cannot pay negative numbers nor zero.");
                         }
                     }else {
                         msg.reply("You can not pay yourself.")
