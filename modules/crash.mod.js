@@ -5,6 +5,8 @@ exports.id = "crash";
 
 exports.onLoad = api => {
     api.commands.add("crash", (msg) => {
+        // This is stupid.
+
         // let bet = parseInt(msg.content.substring(7));
         // let crashAt = undefined;
         // let currentValue = 1.00;
