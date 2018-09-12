@@ -29,6 +29,5 @@ exports.onLoad = api => {
                 msg.reply("You do not have an account to delete.");
             }
         });
-
-    })
+    });
 };

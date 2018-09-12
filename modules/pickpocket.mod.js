@@ -28,12 +28,12 @@ exports.onLoad = api => {
                             accountDB[msg.author.username.toLowerCase()] = {
                                 "owner": msg.author.id,
                                 "amount": accountAfter
-                            }
+                            };
                             
                             accountDB[api.client.users.get(recipientID).username.toLowerCase()] = {
                                 "owner": recipientID,
                                 "amount": recipientAfter
-                            }
+                            };
                             
                             // Writes data to JSON.
                             fsn.writeJSON("./accounts.json", accountDB, {

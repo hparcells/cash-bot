@@ -14,7 +14,7 @@ exports.onLoad = api => {
                 accountDB[msg.author.username.toLowerCase()] = {
                     "owner": msg.author.id,
                     "amount": parseFloat(Number(10).toFixed(2))
-                }
+                };
 
                 // Writes data to JSON.
                 fsn.writeJSON("./accounts.json", accountDB, {
@@ -38,5 +38,5 @@ exports.onLoad = api => {
                 console.log(colors.red(`${msg.author.username} couldn't create a new account because they already have an account.`));
             }
         });
-    })
+    });
 };

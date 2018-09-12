@@ -33,12 +33,12 @@ exports.onLoad = api => {
                                 accountDB[msg.author.username.toLowerCase()] = {
                                     "owner": msg.author.id,
                                     "amount": accountAfter
-                                }
+                                };
     
                                 accountDB[api.client.users.get(recipientID).username.toLowerCase()] = {
                                     "owner": recipientID,
                                     "amount": recipientAfter
-                                }
+                                };
     
                                 // Writes data to JSON.
                                 fsn.writeJSON("./accounts.json", accountDB, {
@@ -60,7 +60,7 @@ exports.onLoad = api => {
                             msg.reply("You cannot pay negative numbers nor zero.");
                         }
                     }else {
-                        msg.reply("You can not pay yourself.")
+                        msg.reply("You can not pay yourself.");
                     }
                 }else {
                     msg.reply(`${api.client.users.get(recipientID).username} does not have an account.`);
@@ -75,5 +75,5 @@ exports.onLoad = api => {
                 console.log(colors.red(`${msg.author.username} didn't have an account to run the pay command.`));
             }
         });
-    })
+    });
 };

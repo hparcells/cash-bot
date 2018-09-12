@@ -2,7 +2,7 @@ const BotCore = require("reputation-core");
 const colors = require("colors");
 const fs = require("fs");
 
-require('dotenv').config();
+require("dotenv").config();
 
 let config = Object.assign({
 	modulePath: "modules",
@@ -17,7 +17,7 @@ bot.on("ready", () => {
     console.log(colors.green(`In ${bot.client.guilds.size} Guilds.`));
 
     // Activities  
-    const activities_list = [
+    const activitiesList = [
         "Depositing Money", 
         "Withdrawing Money",
         "Betting", 
@@ -26,8 +26,8 @@ bot.on("ready", () => {
     ];
 
     setInterval(() => {
-        const index = Math.floor(Math.random() * (activities_list.length - 1) + 1);
-        bot.client.user.setActivity(activities_list[index]);
+        const index = Math.floor(Math.random() * (activitiesList.length - 1) + 1);
+        bot.client.user.setActivity(activitiesList[index]);
     }, 10000);
 
     //Joined Guild

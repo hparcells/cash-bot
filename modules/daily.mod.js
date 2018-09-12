@@ -19,7 +19,7 @@ exports.onLoad = api => {
                         "owner": msg.author.id,
                         "amount": amount,
                         "lastClaim": Date.now()
-                    }
+                    };
 
                     // Writes data to JSON.
                     fsn.writeJSON("./accounts.json", accountDB, {
@@ -47,5 +47,5 @@ exports.onLoad = api => {
                 console.log(colors.red(`${msg.author.username} didn't have an account to run the daily command.`));
             }
         });
-    })
+    });
 };
