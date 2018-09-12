@@ -21,8 +21,8 @@ exports.onLoad = api => {
                     // Checks if recipient is the user.
                     if(msg.author.id !== api.client.users.get(recipientID).id) {
                         if(win === 10) {
-                            let accountAfter = account.amount + (recipientAccount.amount / 10);
-                            let recipientAfter = recipientAccount.amount - (recipientAccount / 10);
+                            let accountAfter = parseFloat(Number(account.amount + (recipientAccount.amount / 10)).toFixed(2));
+                            let recipientAfter = parseFloat(Number(recipientAccount.amount - (recipientAccount / 10)).toFixed(2));
                             
                             // Set JSON information.
                             accountDB[msg.author.username.toLowerCase()] = {
@@ -46,8 +46,8 @@ exports.onLoad = api => {
                                 console.log(colors.green(`${msg.author.username} pickpocketed ${api.client.users.get(recipientID).username} and succeeded.`));
                             });
                         }else {
-                            let accountAfter = account.amount - (account.amount / 10);
-                            let recipientAfter = recipientAccount.amount + (account.amount / 10);
+                            let accountAfter = parseFloat(Number(account.amount - (account.amount / 10)).toFixed(2));
+                            let recipientAfter = parseFloat(Number(recipientAccount.amount + (account.amount / 10)).toFixed(2));
                             
                             // Set JSON information.
                             accountDB[msg.author.username.toLowerCase()] = {

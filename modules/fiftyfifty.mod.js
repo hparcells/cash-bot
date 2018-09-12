@@ -5,7 +5,7 @@ exports.id = "fiftyfifty";
 
 exports.onLoad = api => {
     api.commands.add("fiftyfifty", (msg) => {
-        let bet = parseInt(msg.content.substring(12));
+        let bet = parseFloat(Number(msg.content.substring(12)).toFixed(2));
 
         fsn.readJSON("./accounts.json").then((accountDB) => {
             let account = accountDB[msg.author.username.toLowerCase()];

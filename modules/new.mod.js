@@ -13,7 +13,7 @@ exports.onLoad = api => {
                 // Creates new account.
                 accountDB[msg.author.username.toLowerCase()] = {
                     "owner": msg.author.id,
-                    "amount": 10
+                    "amount": parseFloat(Number(10).toFixed(2))
                 }
 
                 // Writes data to JSON.

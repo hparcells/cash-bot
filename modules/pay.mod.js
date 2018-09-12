@@ -11,7 +11,7 @@ exports.onLoad = api => {
         recipientID = recipientID.replace("@", "");
         recipientID = recipientID.replace(">", "");
 
-        let amount = parseInt(args[1]);
+        let amount = parseFloat(Number(args[1]).toFixed(2));
 
         fsn.readJSON("./accounts.json").then((accountDB) => {
             let account = accountDB[msg.author.username.toLowerCase()];

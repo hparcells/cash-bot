@@ -14,7 +14,7 @@ exports.onLoad = api => {
                 if(account.lastClaim + 86400000 <= Date.now() || account.lastClaim === undefined) {
                     // Get cash.
                     msg.reply("You claimed your daily **20 Cash**. You can get your next daily cash in 24 hours.");
-                    let amount = account.amount + 20;
+                    let amount = parseFloat(Number(account.amount + 20).toFixed(2));
                     accountDB[msg.author.username.toLowerCase()] = {
                         "owner": msg.author.id,
                         "amount": amount,
