@@ -11,7 +11,10 @@ exports.onLoad = api => {
             if(account !== undefined) {
                 msg.channel.send({embed: {
                     "title": ":moneybag: Your Wallet",
-                    "description": `${account.amount} Cash`
+                    "description": `${account.amount} Cash`,
+                    "thumbnail": {
+                        "url": "http://www.stickpng.com/assets/images/580b585b2edbce24c47b2878.png"
+                    }
                 }});
 
                 // Logs in console.
