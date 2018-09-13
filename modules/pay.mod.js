@@ -46,32 +46,80 @@ exports.onLoad = api => {
                                 fsn.writeJSON("./accounts.json", accountDB, {
                                     replacer: null,
                                     spaces: 4
-                                }).then(() => {
-                                    msg.reply(`You successfully paid ${api.client.users.get(recipientID)} **${args[1]} Cash**.`);
-    
+                                }).then(() => {    
+                                    // Send message.
+                                    msg.channel.send({embed: {
+                                        "title": ":white_check_mark: Pay",
+                                        "description": `You successfully paid ${api.client.users.get(recipientID)} **${args[1]} Cash**.`,
+                                        "thumbnail": {
+                                            "url": "https://sometag.org/_assets/emoji/twitter/white-heavy-check-mark_2705.png"
+                                        }
+                                    }});
+
                                     // Logs in console.
                                     console.log(colors.green(`${msg.author.username} paid ${api.client.users.get(recipientID).username} ${args[1]} Cash.`));
                                 });
                             }else {
-                                msg.reply("You do not have enough Cash for that action.");
+                                // Sends message.
+                                msg.channel.send({embed: {
+                                    "title": ":x: Pay",
+                                    "description": "You do not have enough Cash for that action.",
+                                    "thumbnail": {
+                                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+                                    }
+                                }});
 
                                 // Logs in console.
                                 console.log(colors.red(`${msg.author.username} didn't have enough Cash to run the pay command.`));
                             }
                         }else {
-                            msg.reply("You cannot pay negative numbers nor zero.");
+                            // Sends message.
+                            msg.channel.send({embed: {
+                                "title": ":x: Pay",
+                                "description": "You cannot bet negative numbers nor zero.",
+                                "thumbnail": {
+                                    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+                                }
+                            }});
+
+                            // Logs in console.
+                            console.log(colors.red(`${msg.author.username} gave a negative number or zero for the pay command.`));
                         }
                     }else {
-                        msg.reply("You can not pay yourself.");
+                        // Sends message.
+                        msg.channel.send({embed: {
+                            "title": ":x: Pay",
+                            "description": "You cannot pay yourself.",
+                            "thumbnail": {
+                                "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+                            }
+                        }});
+
+                        // Logs in console.
+                        console.log(colors.red(`${msg.author.username} tried to pay themself.`));
                     }
                 }else {
-                    msg.reply(`${api.client.users.get(recipientID).username} does not have an account.`);
+                    // Sends message.
+                    msg.channel.send({embed: {
+                        "title": ":x: Pay",
+                        "description": `${api.client.users.get(recipientID).username} does not have an account.`,
+                        "thumbnail": {
+                            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+                        }
+                    }});
 
                     // Logs in console.
                     console.log(colors.red(`${api.client.users.get(recipientID).username} didn't have an account to recieve a payment from ${msg.author.username}.`));
                 }
             }else {
-                msg.reply("You do not have an account, use `$new` to create a new account.");
+                // Sends message.
+                msg.channel.send({embed: {
+                    "title": ":x: Pay",
+                    "description": "You do not have an account, use `$new` to create a new account.",
+                    "thumbnail": {
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+                    }
+                }});
 
                 // Logs in console.
                 console.log(colors.red(`${msg.author.username} didn't have an account to run the pay command.`));

@@ -38,7 +38,13 @@ exports.onLoad = api => {
                                 spaces: 4
                             }).then(() => {
                                 // Send message.
-                                msg.reply(`You won the 50/50 and got **${bet} Cash**`);
+                                msg.channel.send({embed: {
+                                    "title": ":white_check_mark: Fifty Fifty",
+                                    "description": `You won the 50/50 and got **${bet} Cash**`,
+                                    "thumbnail": {
+                                        "url": "https://sometag.org/_assets/emoji/twitter/white-heavy-check-mark_2705.png"
+                                    }
+                                }});
     
                                 // Logs in console.
                                 console.log(colors.green(`${msg.author.username} used the fiftyfifty command and won.`));
@@ -59,26 +65,53 @@ exports.onLoad = api => {
                                 spaces: 4
                             }).then(() => {
                                 // Send message.
-                                msg.reply(`You lost the 50/50 and lost **${bet} Cash**`);
+                                msg.channel.send({embed: {
+                                    "title": ":x: Fifty Fifty",
+                                    "description": `You lost the 50/50 and lost **${bet} Cash**`,
+                                    "thumbnail": {
+                                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+                                    }
+                                }});
     
                                 // Logs in console.
                                 console.log(colors.green(`${msg.author.username} used the fiftyfifty command and lost.`));
                             });
                         }
                     }else {
-                        msg.reply("You do not have enough Cash for that action.");
+                        // Sends message.
+                        msg.channel.send({embed: {
+                            "title": ":x: Fifty Fifty",
+                            "description": "You do not have enough Cash for that action.",
+                            "thumbnail": {
+                                "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+                            }
+                        }});
 
                         // Logs in console.
                         console.log(colors.red(`${msg.author.username} didn't have enough Cash to run the fiftyfifty command.`));
                     }
                 }else {
-                    msg.reply("You cannot bet negative numbers nor zero.");
+                    // Sends message.
+                    msg.channel.send({embed: {
+                        "title": ":x: Fifty Fifty",
+                        "description": "You cannot bet negative numbers nor zero.",
+                        "thumbnail": {
+                            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+                        }
+                    }});
 
                     // Logs in console.
                     console.log(colors.red(`${msg.author.username} gave a negative number or zero for the fiftyfifty command.`));
                 }
             }else {
-                msg.reply("You do not have an account, use `$new` to create a new account.");
+                // Sends message.
+                msg.channel.send({embed: {
+                    "title": ":x: Fifty Fifty",
+                    "description": "You do not have an account, use `$new` to create a new account.",
+                    "thumbnail": {
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+                    }
+                }});
 
                 // Logs in console.
                 console.log(colors.red(`${msg.author.username} didn't have an account to run the fiftyfifty command.`));

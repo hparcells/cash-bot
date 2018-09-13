@@ -16,7 +16,14 @@ exports.onLoad = api => {
                     replacer: null,
                     spaces: 4
                 }).then(() => {
-                    msg.reply(`You successfully deleted your account.`);
+                    // Sends message.
+                    msg.channel.send({embed: {
+                        "title": ":x: Delete Account",
+                        "description": "You successfully deleted your account.",
+                        "thumbnail": {
+                            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+                        }
+                    }});
                     
                     // Logs in console.
                     console.log(colors.green(`${msg.author.username} deleted their account.`));
@@ -26,7 +33,14 @@ exports.onLoad = api => {
                     }
                 });
             }else {
-                msg.reply("You do not have an account to delete.");
+                // Sends message.
+                msg.channel.send({embed: {
+                    "title": ":x: Delete Account",
+                    "description": "You do not have an acconut to delete.",
+                    "thumbnail": {
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+                    }
+                }});
             }
         });
     });

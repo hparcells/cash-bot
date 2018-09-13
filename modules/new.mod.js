@@ -22,8 +22,14 @@ exports.onLoad = api => {
                     replacer: null,
                     spaces: 4
                 }).then(() => {
-                    // Sends a message to the user.
-                    msg.reply("You have successfully created your new account. You have been given **10 Cash** to start with.");
+                    // Send message.
+                    msg.channel.send({embed: {
+                        "title": ":white_check_mark: New Account",
+                        "description": "You have successfully created your new account. You have been given **10 Cash** to start with.",
+                        "thumbnail": {
+                            "url": "https://sometag.org/_assets/emoji/twitter/white-heavy-check-mark_2705.png"
+                        }
+                    }});
 
                     // Logs in console.
                     console.log(colors.green(`${msg.author.username} created a new account.`));
@@ -33,7 +39,14 @@ exports.onLoad = api => {
                     }
                 });
             }else {
-                msg.reply("You already have an account.");
+                // Sends message.
+                msg.channel.send({embed: {
+                    "title": ":x: New Account",
+                    "description": "You already have an account.",
+                    "thumbnail": {
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+                    }
+                }});
 
                 // Logs in console.
                 console.log(colors.red(`${msg.author.username} couldn't create a new account because they already have an account.`));

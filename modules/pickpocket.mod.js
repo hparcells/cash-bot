@@ -42,8 +42,16 @@ exports.onLoad = api => {
                                 replacer: null,
                                 spaces: 4
                             }).then(() => {
-                                msg.reply(`You successfully pickpocketed ${api.client.users.get(recipientID).username} and got 10% of their money.`);
-                                
+                                // Send message.
+                                msg.channel.send({embed: {
+                                    "title": ":white_check_mark: Pickpocket",
+                                    "description": `You successfully pickpocketed ${api.client.users.get(recipientID).username} and got 10% of their money.`,
+                                    "thumbnail": {
+                                        "url": "https://sometag.org/_assets/emoji/twitter/white-heavy-check-mark_2705.png"
+                                    }
+                                }});
+    
+
                                 // Logs in console.
                                 console.log(colors.green(`${msg.author.username} pickpocketed ${api.client.users.get(recipientID).username} and succeeded.`));
                             });
@@ -69,23 +77,54 @@ exports.onLoad = api => {
                                 replacer: null,
                                 spaces: 4
                             }).then(() => {
-                                msg.reply(`You failed to pickpocket ${api.client.users.get(recipientID).username} and they got 10% of your money.`);
+                                // Send message.
+                                msg.channel.send({embed: {
+                                    "title": ":x: Pickpocket",
+                                    "description": `You failed to pickpocket ${api.client.users.get(recipientID).username} and they got 10% of your money.`,
+                                    "thumbnail": {
+                                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+                                    }
+                                }});
                                 
                                 // Logs in console.
                                 console.log(colors.green(`${msg.author.username} pickpocketed ${api.client.users.get(recipientID).username} and failed.`));
                             });
                         }
                     }else {
-                        msg.reply("You can not pickpocket yourself.");
+                        // Sends message.
+                        msg.channel.send({embed: {
+                            "title": ":x: Pickpocket",
+                            "description": "You cannot pickpocket yourself.",
+                            "thumbnail": {
+                                "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+                            }
+                        }});
+
+                        // Logs in console.
+                        console.log(colors.red(`${msg.author.username} tried to pickpocket themself.`));
                     }
                 }else {
-                    msg.reply(`${api.client.users.get(recipientID).username} does not have an account.`);
+                    // Sends message.
+                    msg.channel.send({embed: {
+                        "title": ":x: Pickpocket",
+                        "description": `${api.client.users.get(recipientID).username} does not have an account.`,
+                        "thumbnail": {
+                            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+                        }
+                    }});
 
                     // Logs in console.
                     console.log(colors.red(`${api.client.users.get(recipientID).username} didn't have an account to recieve a payment from ${msg.author.username}.`));
                 }
             }else {
-                msg.reply("You do not have an account, use `$new` to create a new account.");
+                // Sends message.
+                msg.channel.send({embed: {
+                    "title": ":x: Pockpocket",
+                    "description": "You do not have an account, use `$new` to create a new account.",
+                    "thumbnail": {
+                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+                    }
+                }});
 
                 // Logs in console.
                 console.log(colors.red(`${msg.author.username} didn't have an account to run the pay command.`));
