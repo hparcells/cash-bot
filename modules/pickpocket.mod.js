@@ -27,12 +27,14 @@ exports.onLoad = api => {
                             // Set JSON information.
                             accountDB[msg.author.username.toLowerCase()] = {
                                 "owner": msg.author.id,
-                                "amount": accountAfter
+                                "amount": accountAfter,
+                                "lastClaimed": account.lastClaimed
                             };
-                            
+
                             accountDB[api.client.users.get(recipientID).username.toLowerCase()] = {
                                 "owner": recipientID,
-                                "amount": recipientAfter
+                                "amount": recipientAfter,
+                                "lastClaimed": recipientAccount.lastClaimed
                             };
                             
                             // Writes data to JSON.
@@ -52,13 +54,15 @@ exports.onLoad = api => {
                             // Set JSON information.
                             accountDB[msg.author.username.toLowerCase()] = {
                                 "owner": msg.author.id,
-                                "amount": accountAfter
-                            }
-                            
+                                "amount": accountAfter,
+                                "lastClaimed": account.lastClaimed
+                            };
+
                             accountDB[api.client.users.get(recipientID).username.toLowerCase()] = {
                                 "owner": recipientID,
-                                "amount": recipientAfter
-                            }
+                                "amount": recipientAfter,
+                                "lastClaimed": recipientAccount.lastClaimed
+                            };
                             
                             // Writes data to JSON.
                             fsn.writeJSON("./accounts.json", accountDB, {

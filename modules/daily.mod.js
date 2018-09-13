@@ -11,14 +11,14 @@ exports.onLoad = api => {
             // Checks if user account exists.
             if(account !== undefined) {
                 // Checks if the time is right to claim.
-                if(account.lastClaim + 86400000 <= Date.now() || account.lastClaim === undefined) {
+                if(account.lastClaimed + 86400000 <= Date.now() || account.lastClaimed === undefined) {
                     // Get cash.
                     msg.reply("You claimed your daily **20 Cash**. You can get your next daily cash in 24 hours.");
                     let amount = parseFloat(Number(account.amount + 20).toFixed(2));
                     accountDB[msg.author.username.toLowerCase()] = {
                         "owner": msg.author.id,
                         "amount": amount,
-                        "lastClaim": Date.now()
+                        "lastClaimed": Date.now()
                     };
 
                     // Writes data to JSON.
@@ -30,7 +30,7 @@ exports.onLoad = api => {
                     // Logs in console.
                     console.log(colors.green(`${msg.author.username} used the daily command and got their daily cash.`));
                 }else {
-                    let timeLeft = (account.lastClaim + 86400000) - parseInt(Date.now());
+                    let timeLeft = (account.lastClaimed + 86400000) - parseInt(Date.now());
                     let seconds = parseInt((timeLeft / 1000) % 60);
                     let minutes = parseInt((timeLeft / (1000 * 60)) % 60);
                     let hours = parseInt((timeLeft / (1000 * 60 * 60)) % 24);
