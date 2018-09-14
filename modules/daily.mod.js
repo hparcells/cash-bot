@@ -6,7 +6,7 @@ exports.id = "daily";
 exports.onLoad = api => {
     api.commands.add("daily", (msg) => {        
         fsn.readJSON("./accounts.json").then((accountDB) => {
-            let account = accountDB[msg.author.username.toLowerCase()];
+            let account = accountDB[msg.author.id];
 
             // Checks if user account exists.
             if(account !== undefined) {
@@ -22,8 +22,8 @@ exports.onLoad = api => {
                     }});
 
                     let amount = parseFloat(Number(account.amount + 20).toFixed(2));
-                    accountDB[msg.author.username.toLowerCase()] = {
-                        "owner": msg.author.id,
+                    accountDB[msg.author.id] = {
+                        "owner": msg.author.username,
                         "amount": amount,
                         "lastClaimed": Date.now()
                     };

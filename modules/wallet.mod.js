@@ -6,7 +6,7 @@ exports.id = "wallet";
 exports.onLoad = api => {
     api.commands.add("wallet", (msg) => {
         fsn.readJSON("./accounts.json").then((accountDB) => {
-            let account = accountDB[msg.author.username.toLowerCase()];
+            let account = accountDB[msg.author.id];
 
             if(account !== undefined) {
                 msg.channel.send({embed: {

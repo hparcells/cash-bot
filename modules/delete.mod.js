@@ -6,11 +6,11 @@ exports.id = "delete";
 exports.onLoad = api => {
     api.commands.add("delete", (msg) => {
         fsn.readJSON("./accounts.json").then((accountDB) => {
-            let account = accountDB[msg.author.username.toLowerCase()];
+            let account = accountDB[msg.author.id];
 
             if(account !== undefined) {
                 if(account.amount >= 50) {
-                    delete accountDB[msg.author.username.toLowerCase()];
+                    delete accountDB[msg.author.id];
                 
                     // Writes data to JSON.
                     fsn.writeJSON("./accounts.json", accountDB, {

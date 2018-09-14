@@ -14,8 +14,8 @@ exports.onLoad = api => {
         let amount = parseFloat(Number(args[1]).toFixed(2));
 
         fsn.readJSON("./accounts.json").then((accountDB) => {
-            let account = accountDB[msg.author.username.toLowerCase()];
-            let recipientAccount = accountDB[api.client.users.get(recipientID).username.toLowerCase()];
+            let account = accountDB[msg.author.id];
+            let recipientAccount = accountDB[api.client.users.get(recipientID).id];
 
             // Checks if both users have an account.
             if(account !== undefined) {
@@ -30,14 +30,14 @@ exports.onLoad = api => {
                                 let recipientAfter = recipientAccount.amount + amount;
     
                                 // Set JSON information.
-                                accountDB[msg.author.username.toLowerCase()] = {
-                                    "owner": msg.author.id,
+                                accountDB[msg.author.id] = {
+                                    "owner": msg.author.username,
                                     "amount": accountAfter,
                                     "lastClaimed": account.lastClaimed
                                 };
     
-                                accountDB[api.client.users.get(recipientID).username.toLowerCase()] = {
-                                    "owner": recipientID,
+                                accountDB[api.client.users.get(recipientID).id] = {
+                                    "owner": api.client.users.get(recipientID).username,
                                     "amount": recipientAfter,
                                     "lastClaimed": recipientAccount.lastClaimed
                                 };
@@ -50,7 +50,7 @@ exports.onLoad = api => {
                                     // Send message.
                                     msg.channel.send({embed: {
                                         "title": ":white_check_mark: Pay",
-                                        "description": `You successfully paid ${api.client.users.get(recipientID)} **${args[1]} Cash**.`,
+                                        "description": `You successfully paid ${api.client.users.get(recipientID).username} **${args[1]} Cash**.`,
                                         "thumbnail": {
                                             "url": "https://sometag.org/_assets/emoji/twitter/white-heavy-check-mark_2705.png"
                                         }

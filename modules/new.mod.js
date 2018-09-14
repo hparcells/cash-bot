@@ -6,13 +6,13 @@ exports.id = "new";
 exports.onLoad = api => {
     api.commands.add("new", (msg) => {
         fsn.readJSON("./accounts.json").then((accountDB) => {
-            let account = accountDB[msg.author.username.toLowerCase()];
+            let account = accountDB[msg.author.id];
 
             // Checks if user is able to create a new account.
             if(account === undefined) {
                 // Creates new account.
-                accountDB[msg.author.username.toLowerCase()] = {
-                    "owner": msg.author.id,
+                accountDB[msg.author.id] = {
+                    "owner": msg.author.username,
                     "amount": parseFloat(Number(10).toFixed(2)),
                     "lastClaimed": Date.now() - 86400000
                 };

@@ -12,8 +12,8 @@ exports.onLoad = api => {
             recipientID = recipientID.replace("@", "");
             recipientID = recipientID.replace(">", "");
             let win = Math.floor(Math.random() * 10) + 1;
-            let account = accountDB[msg.author.username.toLowerCase()];
-            let recipientAccount = accountDB[api.client.users.get(recipientID).username.toLowerCase()];
+            let account = accountDB[msg.author.id];
+            let recipientAccount = accountDB[api.client.users.get(recipientID).id];
 
             // Checks if both users have an account.
             if(account !== undefined) {
@@ -25,14 +25,14 @@ exports.onLoad = api => {
                             let recipientAfter = parseFloat(Number(recipientAccount.amount - (recipientAccount / 10)).toFixed(2));
                             
                             // Set JSON information.
-                            accountDB[msg.author.username.toLowerCase()] = {
-                                "owner": msg.author.id,
+                            accountDB[msg.author.id] = {
+                                "owner": msg.author.username,
                                 "amount": accountAfter,
                                 "lastClaimed": account.lastClaimed
                             };
 
-                            accountDB[api.client.users.get(recipientID).username.toLowerCase()] = {
-                                "owner": recipientID,
+                            accountDB[api.client.users.get(recipientID).id] = {
+                                "owner": api.client.users.get(recipientID).username,
                                 "amount": recipientAfter,
                                 "lastClaimed": recipientAccount.lastClaimed
                             };
@@ -60,14 +60,14 @@ exports.onLoad = api => {
                             let recipientAfter = parseFloat(Number(recipientAccount.amount + (account.amount / 10)).toFixed(2));
                             
                             // Set JSON information.
-                            accountDB[msg.author.username.toLowerCase()] = {
-                                "owner": msg.author.id,
+                            accountDB[msg.author.id] = {
+                                "owner": msg.author.username,
                                 "amount": accountAfter,
                                 "lastClaimed": account.lastClaimed
                             };
 
-                            accountDB[api.client.users.get(recipientID).username.toLowerCase()] = {
-                                "owner": recipientID,
+                            accountDB[api.client.users.get(recipientID).id] = {
+                                "owner": api.client.users.get(recipientID).username,
                                 "amount": recipientAfter,
                                 "lastClaimed": recipientAccount.lastClaimed
                             };

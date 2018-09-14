@@ -8,7 +8,7 @@ exports.onLoad = api => {
         let bet = parseFloat(Number(msg.content.substring(12)).toFixed(2));
 
         fsn.readJSON("./accounts.json").then((accountDB) => {
-            let account = accountDB[msg.author.username.toLowerCase()];
+            let account = accountDB[msg.author.id];
             
             // Checks if user account exists.
             if(account !== undefined) {
@@ -26,8 +26,8 @@ exports.onLoad = api => {
                             let accountAfter = account.amount + bet;
                             
                             // Set JSON information.
-                            accountDB[msg.author.username.toLowerCase()] = {
-                                "owner": msg.author.id,
+                            accountDB[msg.author.id] = {
+                                "owner": msg.author.username,
                                 "amount": accountAfter,
                                 "lastClaimed": account.lastClaimed
                             };
@@ -53,8 +53,8 @@ exports.onLoad = api => {
                             let accountAfter = account.amount - bet;
     
                             // Set JSON information.
-                            accountDB[msg.author.username.toLowerCase()] = {
-                                "owner": msg.author.id,
+                            accountDB[msg.author.id] = {
+                                "owner": msg.author.username,
                                 "amount": accountAfter,
                                 "lastClaimed": account.lastClaimed
                             };
