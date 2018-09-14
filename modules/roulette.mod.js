@@ -88,6 +88,8 @@ exports.onLoad = api => {
                                             spaces: 4
                                         });
 
+                                        // Logs in console.
+                                        console.log(colors.green(`${msg.author.username} used the roulette command and won.`));
                                     }, 3000);
                                 }else {
                                     if(color === winningColor) {
@@ -129,6 +131,9 @@ exports.onLoad = api => {
                                                 spaces: 4
                                             });
                                         }, 3000);
+
+                                        // Logs in console.
+                                        console.log(colors.green(`${msg.author.username} used the roulette command and won.`));
                                     }else {
                                         setTimeout(() => {
                                             msg.channel.fetchMessages({
@@ -167,6 +172,9 @@ exports.onLoad = api => {
                                                 replacer: null,
                                                 spaces: 4
                                             });
+
+                                            // Logs in console.
+                                            console.log(colors.green(`${msg.author.username} used the roulette command and lost.`));
                                         }, 3000);
                                     }
                                 }
@@ -224,25 +232,6 @@ exports.onLoad = api => {
                 console.log(colors.red(`${msg.author.username} didn't have an account to run the roulette command.`));
             }
         });
-
-
-
-
-
-
-
-
-        // // Sends message.
-        // msg.channel.send({embed: {
-        //     title: ":ping_pong: Pong!",
-        //     description: `${Math.round(api.client.ping)} ms`,
-        //     thumbnail: {
-        //         url: "https://png2.kisspng.com/20180226/gcw/kisspng-table-tennis-racket-emoji-ball-red-table-tennis-racket-cartoon-5a93e20ba70605.1839325515196410996841.png"
-        //     }
-        // }});
-
-        // // Logs in console.
-        // console.log(colors.green(`${msg.author.username} used the ping command.`));
     });
 };
 
