@@ -19,10 +19,10 @@ exports.onLoad = api => {
                     }).then(() => {
                         // Sends message.
                         msg.channel.send({embed: {
-                            "title": ":x: Delete Account",
-                            "description": "You successfully deleted your account.",
-                            "thumbnail": {
-                                "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+                            title: ":x: Delete Account",
+                            description: "You successfully deleted your account.",
+                            thumbnail: {
+                                url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
                             }
                         }});
                         
@@ -36,10 +36,10 @@ exports.onLoad = api => {
                 }else {
                     // Sends message.
                     msg.channel.send({embed: {
-                        "title": ":x: Delete Account",
-                        "description": "You do not have enough Cash to delete your account.",
-                        "thumbnail": {
-                            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+                        title: ":x: Delete Account",
+                        description: "You do not have enough Cash to delete your account.",
+                        thumbnail: {
+                            url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
                         }
                     }});
 
@@ -49,10 +49,10 @@ exports.onLoad = api => {
             }else {
                 // Sends message.
                 msg.channel.send({embed: {
-                    "title": ":x: Delete Account",
-                    "description": "You do not have an acconut to delete.",
-                    "thumbnail": {
-                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+                    title: ":x: Delete Account",
+                    description: "You do not have an acconut to delete.",
+                    thumbnail: {
+                        url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
                     }
                 }});
 

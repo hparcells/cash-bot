@@ -31,15 +31,15 @@ exports.onLoad = api => {
     
                                 // Set JSON information.
                                 accountDB[msg.author.id] = {
-                                    "owner": msg.author.username,
-                                    "amount": accountAfter,
-                                    "lastClaimed": account.lastClaimed
+                                    owner: msg.author.username,
+                                    amount: accountAfter,
+                                    lastClaimed: account.lastClaimed
                                 };
     
                                 accountDB[api.client.users.get(recipientID).id] = {
-                                    "owner": api.client.users.get(recipientID).username,
-                                    "amount": recipientAfter,
-                                    "lastClaimed": recipientAccount.lastClaimed
+                                    owner: api.client.users.get(recipientID).username,
+                                    amount: recipientAfter,
+                                    lastClaimed: recipientAccount.lastClaimed
                                 };
     
                                 // Writes data to JSON.
@@ -49,10 +49,10 @@ exports.onLoad = api => {
                                 }).then(() => {    
                                     // Send message.
                                     msg.channel.send({embed: {
-                                        "title": ":white_check_mark: Pay",
-                                        "description": `You successfully paid ${api.client.users.get(recipientID).username} **${args[1]} Cash**.`,
-                                        "thumbnail": {
-                                            "url": "https://sometag.org/_assets/emoji/twitter/white-heavy-check-mark_2705.png"
+                                        title: ":white_check_mark: Pay",
+                                        description: `You successfully paid ${api.client.users.get(recipientID).username} **${args[1]} Cash**.`,
+                                        thumbnail: {
+                                            url: "https://sometag.org/_assets/emoji/twitter/white-heavy-check-mark_2705.png"
                                         }
                                     }});
 
@@ -62,10 +62,10 @@ exports.onLoad = api => {
                             }else {
                                 // Sends message.
                                 msg.channel.send({embed: {
-                                    "title": ":x: Pay",
-                                    "description": "You do not have enough Cash for that action.",
-                                    "thumbnail": {
-                                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+                                    title: ":x: Pay",
+                                    description: "You do not have enough Cash for that action.",
+                                    thumbnail: {
+                                        url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
                                     }
                                 }});
 
@@ -75,10 +75,10 @@ exports.onLoad = api => {
                         }else {
                             // Sends message.
                             msg.channel.send({embed: {
-                                "title": ":x: Pay",
-                                "description": "You cannot bet negative numbers nor zero.",
-                                "thumbnail": {
-                                    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+                                title: ":x: Pay",
+                                description: "You cannot bet negative numbers nor zero.",
+                                thumbnail: {
+                                    url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
                                 }
                             }});
 
@@ -88,10 +88,10 @@ exports.onLoad = api => {
                     }else {
                         // Sends message.
                         msg.channel.send({embed: {
-                            "title": ":x: Pay",
-                            "description": "You cannot pay yourself.",
-                            "thumbnail": {
-                                "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+                            title: ":x: Pay",
+                            description: "You cannot pay yourself.",
+                            thumbnail: {
+                                url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
                             }
                         }});
 
@@ -101,10 +101,10 @@ exports.onLoad = api => {
                 }else {
                     // Sends message.
                     msg.channel.send({embed: {
-                        "title": ":x: Pay",
-                        "description": `${api.client.users.get(recipientID).username} does not have an account.`,
-                        "thumbnail": {
-                            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+                        title: ":x: Pay",
+                        description: `${api.client.users.get(recipientID).username} does not have an account.`,
+                        thumbnail: {
+                            url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
                         }
                     }});
 
@@ -114,10 +114,10 @@ exports.onLoad = api => {
             }else {
                 // Sends message.
                 msg.channel.send({embed: {
-                    "title": ":x: Pay",
-                    "description": "You do not have an account, use `$new` to create a new account.",
-                    "thumbnail": {
-                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+                    title: ":x: Pay",
+                    description: "You do not have an account, use `$new` to create a new account.",
+                    thumbnail: {
+                        url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
                     }
                 }});
 

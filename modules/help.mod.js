@@ -6,9 +6,9 @@ exports.onLoad = api => {
     api.commands.add("help", (msg) => {
         // Sends message to author.
         msg.author.send({embed: {
-            "title": ":envelope_with_arrow: Help",
-            "description": "Prefix: `$`",
-            "fields": [{
+            title: ":envelope_with_arrow: Help",
+            description: "Prefix: `$`",
+            fields: [{
                 name: "daily",
                 value: "Gives you 20 Cash every 24 hours.",
             }, {
@@ -36,17 +36,17 @@ exports.onLoad = api => {
                 name: "wallet",
                 value: "Tells how much money you have.",
             }],
-            "thumbnail": {
-                "url": "https://images.emojiterra.com/twitter/512px/1f4e9.png"
+            thumbnail: {
+                url: "https://images.emojiterra.com/twitter/512px/1f4e9.png"
             }
         }});
 
         // Sends message to DMs.
         msg.channel.send({embed: {
-            "title": ":envelope_with_arrow: Help",
-            "description": "Sent to the DMs!",
-            "thumbnail": {
-                "url": "https://images.emojiterra.com/twitter/512px/1f4e9.png"
+            title: ":envelope_with_arrow: Help",
+            description: "Sent to the DMs!",
+            thumbnail: {
+                url: "https://images.emojiterra.com/twitter/512px/1f4e9.png"
             }
         }});
 

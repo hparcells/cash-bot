@@ -12,9 +12,9 @@ exports.onLoad = api => {
             if(account === undefined) {
                 // Creates new account.
                 accountDB[msg.author.id] = {
-                    "owner": msg.author.username,
-                    "amount": parseFloat(Number(10).toFixed(2)),
-                    "lastClaimed": Date.now() - 86400000
+                    owner: msg.author.username,
+                    amount: parseFloat(Number(10).toFixed(2)),
+                    lastClaimed: Date.now() - 86400000
                 };
 
                 // Writes data to JSON.
@@ -24,10 +24,10 @@ exports.onLoad = api => {
                 }).then(() => {
                     // Send message.
                     msg.channel.send({embed: {
-                        "title": ":white_check_mark: New Account",
-                        "description": "You have successfully created your new account. You have been given **10 Cash** to start with.",
-                        "thumbnail": {
-                            "url": "https://sometag.org/_assets/emoji/twitter/white-heavy-check-mark_2705.png"
+                        title: ":white_check_mark: New Account",
+                        description: "You have successfully created your new account. You have been given **10 Cash** to start with.",
+                        thumbnail: {
+                            url: "https://sometag.org/_assets/emoji/twitter/white-heavy-check-mark_2705.png"
                         }
                     }});
 
@@ -41,10 +41,10 @@ exports.onLoad = api => {
             }else {
                 // Sends message.
                 msg.channel.send({embed: {
-                    "title": ":x: New Account",
-                    "description": "You already have an account.",
-                    "thumbnail": {
-                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+                    title: ":x: New Account",
+                    description: "You already have an account.",
+                    thumbnail: {
+                        url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
                     }
                 }});
 

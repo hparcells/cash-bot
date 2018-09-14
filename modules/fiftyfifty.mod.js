@@ -27,9 +27,9 @@ exports.onLoad = api => {
                             
                             // Set JSON information.
                             accountDB[msg.author.id] = {
-                                "owner": msg.author.username,
-                                "amount": accountAfter,
-                                "lastClaimed": account.lastClaimed
+                                owner: msg.author.username,
+                                amount: accountAfter,
+                                lastClaimed: account.lastClaimed
                             };
     
                             // Writes data to JSON.
@@ -39,10 +39,10 @@ exports.onLoad = api => {
                             }).then(() => {
                                 // Send message.
                                 msg.channel.send({embed: {
-                                    "title": ":white_check_mark: Fifty Fifty",
-                                    "description": `You won the 50/50 and got **${bet} Cash**`,
-                                    "thumbnail": {
-                                        "url": "https://sometag.org/_assets/emoji/twitter/white-heavy-check-mark_2705.png"
+                                    title: ":white_check_mark: Fifty Fifty",
+                                    description: `You won the 50/50 and got **${bet} Cash**`,
+                                    thumbnail: {
+                                        url: "https://sometag.org/_assets/emoji/twitter/white-heavy-check-mark_2705.png"
                                     }
                                 }});
     
@@ -54,9 +54,9 @@ exports.onLoad = api => {
     
                             // Set JSON information.
                             accountDB[msg.author.id] = {
-                                "owner": msg.author.username,
-                                "amount": accountAfter,
-                                "lastClaimed": account.lastClaimed
+                                owner: msg.author.username,
+                                amount: accountAfter,
+                                lastClaimed: account.lastClaimed
                             };
     
                             // Writes data to JSON.
@@ -66,10 +66,10 @@ exports.onLoad = api => {
                             }).then(() => {
                                 // Send message.
                                 msg.channel.send({embed: {
-                                    "title": ":x: Fifty Fifty",
-                                    "description": `You lost the 50/50 and lost **${bet} Cash**`,
-                                    "thumbnail": {
-                                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+                                    title: ":x: Fifty Fifty",
+                                    description: `You lost the 50/50 and lost **${bet} Cash**`,
+                                    thumbnail: {
+                                        url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
                                     }
                                 }});
     
@@ -80,10 +80,10 @@ exports.onLoad = api => {
                     }else {
                         // Sends message.
                         msg.channel.send({embed: {
-                            "title": ":x: Fifty Fifty",
-                            "description": "You do not have enough Cash for that action.",
-                            "thumbnail": {
-                                "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+                            title: ":x: Fifty Fifty",
+                            description: "You do not have enough Cash for that action.",
+                            thumbnail: {
+                                url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
                             }
                         }});
 
@@ -93,10 +93,10 @@ exports.onLoad = api => {
                 }else {
                     // Sends message.
                     msg.channel.send({embed: {
-                        "title": ":x: Fifty Fifty",
-                        "description": "You cannot bet negative numbers nor zero.",
-                        "thumbnail": {
-                            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+                        title: ":x: Fifty Fifty",
+                        description: "You cannot bet negative numbers nor zero.",
+                        thumbnail: {
+                            url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
                         }
                     }});
 
@@ -106,10 +106,10 @@ exports.onLoad = api => {
             }else {
                 // Sends message.
                 msg.channel.send({embed: {
-                    "title": ":x: Fifty Fifty",
-                    "description": "You do not have an account, use `$new` to create a new account.",
-                    "thumbnail": {
-                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+                    title: ":x: Fifty Fifty",
+                    description: "You do not have an account, use `$new` to create a new account.",
+                    thumbnail: {
+                        url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
                     }
                 }});
 

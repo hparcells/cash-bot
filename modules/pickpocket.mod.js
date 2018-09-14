@@ -21,22 +21,22 @@ exports.onLoad = api => {
                     // Checks if recipient is the user.
                     if(msg.author.id !== api.client.users.get(recipientID).id) {
                         if(account.amount !== 0) {
-                            if(recipientAccount.amount !== 0) {
+                            if(recipientAccount.amo !== 0) {
                                 if(win === 10) {
                                     let accountAfter = parseFloat(Number(account.amount + (recipientAccount.amount / 10)).toFixed(2));
                                     let recipientAfter = parseFloat(Number(recipientAccount.amount - (recipientAccount / 10)).toFixed(2));
                                     
                                     // Set JSON information.
                                     accountDB[msg.author.id] = {
-                                        "owner": msg.author.username,
-                                        "amount": accountAfter,
-                                        "lastClaimed": account.lastClaimed
+                                        owner: msg.author.username,
+                                        amount: accountAfter,
+                                        lastClaimed: account.lastClaimed
                                     };
         
                                     accountDB[api.client.users.get(recipientID).id] = {
-                                        "owner": api.client.users.get(recipientID).username,
-                                        "amount": recipientAfter,
-                                        "lastClaimed": recipientAccount.lastClaimed
+                                        owner: api.client.users.get(recipientID).username,
+                                        amount: recipientAfter,
+                                        lastClaimed: recipientAccount.lastClaimed
                                     };
                                     
                                     // Writes data to JSON.
@@ -46,10 +46,10 @@ exports.onLoad = api => {
                                     }).then(() => {
                                         // Send message.
                                         msg.channel.send({embed: {
-                                            "title": ":white_check_mark: Pickpocket",
-                                            "description": `You successfully pickpocketed ${api.client.users.get(recipientID).username} and got 10% of their money.`,
-                                            "thumbnail": {
-                                                "url": "https://sometag.org/_assets/emoji/twitter/white-heavy-check-mark_2705.png"
+                                            title: ":white_check_mark: Pickpocket",
+                                            description: `You successfully pickpocketed ${api.client.users.get(recipientID).username} and got 10% of their money.`,
+                                            thumbnail: {
+                                                url: "https://sometag.org/_assets/emoji/twitter/white-heavy-check-mark_2705.png"
                                             }
                                         }});
             
@@ -63,15 +63,15 @@ exports.onLoad = api => {
                                     
                                     // Set JSON information.
                                     accountDB[msg.author.id] = {
-                                        "owner": msg.author.username,
-                                        "amount": accountAfter,
-                                        "lastClaimed": account.lastClaimed
+                                        owner: msg.author.username,
+                                        amount: accountAfter,
+                                        lastClaimed: account.lastClaimed
                                     };
         
                                     accountDB[api.client.users.get(recipientID).id] = {
-                                        "owner": api.client.users.get(recipientID).username,
-                                        "amount": recipientAfter,
-                                        "lastClaimed": recipientAccount.lastClaimed
+                                        owner: api.client.users.get(recipientID).username,
+                                        amount: recipientAfter,
+                                        lastClaimed: recipientAccount.lastClaimed
                                     };
                                     
                                     // Writes data to JSON.
@@ -81,10 +81,10 @@ exports.onLoad = api => {
                                     }).then(() => {
                                         // Send message.
                                         msg.channel.send({embed: {
-                                            "title": ":x: Pickpocket",
-                                            "description": `You failed to pickpocket ${api.client.users.get(recipientID).username} and they got 10% of your money.`,
-                                            "thumbnail": {
-                                                "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+                                            title: ":x: Pickpocket",
+                                            description: `You failed to pickpocket ${api.client.users.get(recipientID).username} and they got 10% of your money.`,
+                                            thumbnail: {
+                                                url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
                                             }
                                         }});
                                         
@@ -95,10 +95,10 @@ exports.onLoad = api => {
                             }else {
                                 // Sends message.
                                 msg.channel.send({embed: {
-                                    "title": ":x: Pickpocket",
-                                    "description": `${api.client.users.get(recipientID).username} has nothing to pickpocket from.`,
-                                    "thumbnail": {
-                                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+                                    title: ":x: Pickpocket",
+                                    description: `${api.client.users.get(recipientID).username} has nothing to pickpocket from.`,
+                                    thumbnail: {
+                                        url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
                                     }
                                 }});
 
@@ -108,10 +108,10 @@ exports.onLoad = api => {
                         }else {
                             // Sends message.
                             msg.channel.send({embed: {
-                                "title": ":x: Pickpocket",
-                                "description": "You do not have enough Cash for that action.",
-                                "thumbnail": {
-                                    "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+                                title: ":x: Pickpocket",
+                                description: "You do not have enough Cash for that action.",
+                                thumbnail: {
+                                    url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
                                 }
                             }});
 
@@ -121,10 +121,10 @@ exports.onLoad = api => {
                     }else {
                         // Sends message.
                         msg.channel.send({embed: {
-                            "title": ":x: Pickpocket",
-                            "description": "You cannot pickpocket yourself.",
-                            "thumbnail": {
-                                "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+                            title: ":x: Pickpocket",
+                            description: "You cannot pickpocket yourself.",
+                            thumbnail: {
+                                url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
                             }
                         }});
 
@@ -134,10 +134,10 @@ exports.onLoad = api => {
                 }else {
                     // Sends message.
                     msg.channel.send({embed: {
-                        "title": ":x: Pickpocket",
-                        "description": `${api.client.users.get(recipientID).username} does not have an account.`,
-                        "thumbnail": {
-                            "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+                        title: ":x: Pickpocket",
+                        description: `${api.client.users.get(recipientID).username} does not have an account.`,
+                        thumbnail: {
+                            url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
                         }
                     }});
 
@@ -147,10 +147,10 @@ exports.onLoad = api => {
             }else {
                 // Sends message.
                 msg.channel.send({embed: {
-                    "title": ":x: Pockpocket",
-                    "description": "You do not have an account, use `$new` to create a new account.",
-                    "thumbnail": {
-                        "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+                    title: ":x: Pickpocket",
+                    description: "You do not have an account, use `$new` to create a new account.",
+                    thumbnail: {
+                        url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
                     }
                 }});
 
