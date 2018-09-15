@@ -20,86 +20,102 @@ exports.onLoad = api => {
             // Checks if both users have an account.
             if(account !== undefined) {
                 if(recipientAccount !== undefined) {
-                    // Checks if recipient is the user.
-                    if(msg.author.id !== api.client.users.get(recipientID).id) {
-                        // Checks if payment is positive.
-                        if(amount > 0 && amount !== undefined) {
-                            // Checks if user has enough money.
-                            if(amount <= account.amount) {
-                                let accountAfter = account.amount - amount;
-                                let recipientAfter = recipientAccount.amount + amount;
-    
-                                // Set JSON information.
-                                accountDB[msg.author.id] = {
-                                    owner: msg.author.username,
-                                    amount: accountAfter,
-                                    lastClaimed: account.lastClaimed,
-                                    private: account.private
-                                };
-    
-                                accountDB[api.client.users.get(recipientID).id] = {
-                                    owner: api.client.users.get(recipientID).username,
-                                    amount: recipientAfter,
-                                    lastClaimed: recipientAccount.lastClaimed,
-                                    private: recipientAccount.private
-                                };
-    
-                                // Writes data to JSON.
-                                fsn.writeJSON("./accounts.json", accountDB, {
-                                    replacer: null,
-                                    spaces: 4
-                                }).then(() => {    
-                                    // Send message.
+                    // Checks if the recipient is private.
+                    if(!recipientAccount.private) {
+                        // Checks if recipient is the user.
+                        if(msg.author.id !== api.client.users.get(recipientID).id) {
+                            // Checks if payment is positive.
+                            if(amount > 0 && amount !== undefined) {
+                                // Checks if user has enough money.
+                                if(amount <= account.amount) {
+                                    let accountAfter = account.amount - amount;
+                                    let recipientAfter = recipientAccount.amount + amount;
+        
+                                    // Set JSON information.
+                                    accountDB[msg.author.id] = {
+                                        owner: msg.author.username,
+                                        amount: accountAfter,
+                                        lastClaimed: account.lastClaimed,
+                                        private: account.private
+                                    };
+        
+                                    accountDB[api.client.users.get(recipientID).id] = {
+                                        owner: api.client.users.get(recipientID).username,
+                                        amount: recipientAfter,
+                                        lastClaimed: recipientAccount.lastClaimed,
+                                        private: recipientAccount.private
+                                    };
+        
+                                    // Writes data to JSON.
+                                    fsn.writeJSON("./accounts.json", accountDB, {
+                                        replacer: null,
+                                        spaces: 4
+                                    }).then(() => {    
+                                        // Send message.
+                                        msg.channel.send({embed: {
+                                            title: ":white_check_mark: Pay",
+                                            description: `You successfully paid ${api.client.users.get(recipientID).username} **${args[1]} Cash**.`,
+                                            thumbnail: {
+                                                url: "https://sometag.org/_assets/emoji/twitter/white-heavy-check-mark_2705.png"
+                                            }
+                                        }});
+
+                                        // Logs in console.
+                                        console.log(colors.green(`${msg.author.username} paid ${api.client.users.get(recipientID).username} ${args[1]} Cash.`));
+                                    });
+                                }else {
+                                    // Sends message.
                                     msg.channel.send({embed: {
-                                        title: ":white_check_mark: Pay",
-                                        description: `You successfully paid ${api.client.users.get(recipientID).username} **${args[1]} Cash**.`,
+                                        title: ":x: Pay",
+                                        description: "You do not have enough Cash for that action.",
                                         thumbnail: {
-                                            url: "https://sometag.org/_assets/emoji/twitter/white-heavy-check-mark_2705.png"
+                                            url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
                                         }
                                     }});
 
                                     // Logs in console.
-                                    console.log(colors.green(`${msg.author.username} paid ${api.client.users.get(recipientID).username} ${args[1]} Cash.`));
-                                });
+                                    console.log(colors.red(`${msg.author.username} didn't have enough Cash to run the pay command.`));
+                                }
                             }else {
                                 // Sends message.
                                 msg.channel.send({embed: {
                                     title: ":x: Pay",
-                                    description: "You do not have enough Cash for that action.",
+                                    description: "You cannot bet negative numbers nor zero.",
                                     thumbnail: {
                                         url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
                                     }
                                 }});
 
                                 // Logs in console.
-                                console.log(colors.red(`${msg.author.username} didn't have enough Cash to run the pay command.`));
+                                console.log(colors.red(`${msg.author.username} gave a negative number or zero for the pay command.`));
                             }
                         }else {
                             // Sends message.
                             msg.channel.send({embed: {
                                 title: ":x: Pay",
-                                description: "You cannot bet negative numbers nor zero.",
+                                description: "You cannot pay yourself.",
                                 thumbnail: {
                                     url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
                                 }
                             }});
 
                             // Logs in console.
-                            console.log(colors.red(`${msg.author.username} gave a negative number or zero for the pay command.`));
+                            console.log(colors.red(`${msg.author.username} tried to pay themself.`));
                         }
                     }else {
                         // Sends message.
                         msg.channel.send({embed: {
                             title: ":x: Pay",
-                            description: "You cannot pay yourself.",
+                            description: `${api.client.users.get(recipientID).username}'s account is privated.`,
                             thumbnail: {
                                 url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
                             }
                         }});
 
                         // Logs in console.
-                        console.log(colors.red(`${msg.author.username} tried to pay themself.`));
+                        console.log(colors.red(`${api.client.users.get(recipientID).username} didn't recieve a payment from ${msg.author.username} because their account was privated.`));
                     }
+                    
                 }else {
                     // Sends message.
                     msg.channel.send({embed: {
