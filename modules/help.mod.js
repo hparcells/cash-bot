@@ -35,7 +35,10 @@ exports.onLoad = api => {
             }, {
                 name: "roulette [red / black / green] [Amount]",
                 value: "Spins a roulette wheel."
-            },{
+            }, {
+                name: "slots [Amount]",
+                value: "Use the slot machine."
+            }, {
                 name: "wallet",
                 value: "Tells how much money you have.",
             }],
