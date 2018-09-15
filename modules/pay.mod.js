@@ -33,13 +33,15 @@ exports.onLoad = api => {
                                 accountDB[msg.author.id] = {
                                     owner: msg.author.username,
                                     amount: accountAfter,
-                                    lastClaimed: account.lastClaimed
+                                    lastClaimed: account.lastClaimed,
+                                    private: account.private
                                 };
     
                                 accountDB[api.client.users.get(recipientID).id] = {
                                     owner: api.client.users.get(recipientID).username,
                                     amount: recipientAfter,
-                                    lastClaimed: recipientAccount.lastClaimed
+                                    lastClaimed: recipientAccount.lastClaimed,
+                                    private: recipientAccount.private
                                 };
     
                                 // Writes data to JSON.

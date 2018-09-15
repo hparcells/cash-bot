@@ -25,7 +25,8 @@ exports.onLoad = api => {
                     accountDB[msg.author.id] = {
                         owner: msg.author.username,
                         amount: amount,
-                        lastClaimed: Date.now()
+                        lastClaimed: Date.now(),
+                        private: account.private
                     };
 
                     // Writes data to JSON.

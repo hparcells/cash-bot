@@ -111,7 +111,8 @@ exports.onLoad = api => {
                                                                 accountDB[msg.author.id] = {
                                                                     owner: msg.author.username,
                                                                     amount: accountAfter,
-                                                                    lastClaimed: account.lastClaimed
+                                                                    lastClaimed: account.lastClaimed,
+                                                                    private: account.private
                                                                 };
 
                                                                 // Writes data to JSON.
@@ -157,7 +158,8 @@ exports.onLoad = api => {
                                                                 accountDB[msg.author.id] = {
                                                                     owner: msg.author.username,
                                                                     amount: accountAfter,
-                                                                    lastClaimed: account.lastClaimed
+                                                                    lastClaimed: account.lastClaimed,
+                                                                    private: account.private
                                                                 };
 
                                                                 // Writes data to JSON.

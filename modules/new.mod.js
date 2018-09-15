@@ -14,7 +14,8 @@ exports.onLoad = api => {
                 accountDB[msg.author.id] = {
                     owner: msg.author.username,
                     amount: parseFloat(Number(10).toFixed(2)),
-                    lastClaimed: Date.now() - 86400000
+                    lastClaimed: Date.now() - 86400000,
+                    private: false
                 };
 
                 // Writes data to JSON.
