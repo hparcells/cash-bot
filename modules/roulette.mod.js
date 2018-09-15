@@ -49,50 +49,8 @@ exports.onLoad = api => {
                                     winningColor = "green"
                                 }
 
-                                if(color === "green") {
-                                    setTimeout(() => {
-                                        msg.channel.fetchMessages({
-                                            around: messageID,
-                                            limit: 1
-                                        }).then(messages => {
-                                            const fetchedMsg = messages.first();
-    
-                                            fetchedMsg.edit({embed: {
-                                                title: ":x: Roulette",
-                                                description: `${msg.author.username} won and got **${bet * 5} Cash**. `,
-                                                fields: [{
-                                                    name: "Color Landed On",
-                                                    value: winningColor
-                                                }, {
-                                                    name: "Number Landed On",
-                                                    value: number
-                                                }],
-                                                thumbnail: {
-                                                    url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
-                                                }
-                                            }});
-                                        });
-
-                                        let accountAfter = account.amount + (bet * 5);
-
-                                        // Set JSON information.
-                                        accountDB[msg.author.id] = {
-                                            owner: msg.author.username,
-                                            amount: accountAfter,
-                                            lastClaimed: account.lastClaimed
-                                        };
-
-                                        // Writes data to JSON.
-                                        fsn.writeJSON("./accounts.json", accountDB, {
-                                            replacer: null,
-                                            spaces: 4
-                                        });
-
-                                        // Logs in console.
-                                        console.log(colors.green(`${msg.author.username} used the roulette command and won.`));
-                                    }, 3000);
-                                }else {
-                                    if(color === winningColor) {
+                                if(color === winningColor) {
+                                    if(winningColor === "green") {
                                         setTimeout(() => {
                                             msg.channel.fetchMessages({
                                                 around: messageID,
@@ -100,6 +58,48 @@ exports.onLoad = api => {
                                             }).then(messages => {
                                                 const fetchedMsg = messages.first();
         
+                                                fetchedMsg.edit({embed: {
+                                                    title: ":x: Roulette",
+                                                    description: `${msg.author.username} won and got **${bet * 5} Cash**. `,
+                                                    fields: [{
+                                                        name: "Color Landed On",
+                                                        value: winningColor
+                                                    }, {
+                                                        name: "Number Landed On",
+                                                        value: number
+                                                    }],
+                                                    thumbnail: {
+                                                        url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+                                                    }
+                                                }});
+                                            });
+    
+                                            let accountAfter = account.amount + (bet * 5);
+    
+                                            // Set JSON information.
+                                            accountDB[msg.author.id] = {
+                                                owner: msg.author.username,
+                                                amount: accountAfter,
+                                                lastClaimed: account.lastClaimed
+                                            };
+    
+                                            // Writes data to JSON.
+                                            fsn.writeJSON("./accounts.json", accountDB, {
+                                                replacer: null,
+                                                spaces: 4
+                                            });
+    
+                                            // Logs in console.
+                                            console.log(colors.green(`${msg.author.username} used the roulette command and won.`));
+                                        }, 3000);
+                                    }else {
+                                        setTimeout(() => {
+                                            msg.channel.fetchMessages({
+                                                around: messageID,
+                                                limit: 1
+                                            }).then(messages => {
+                                                const fetchedMsg = messages.first();
+    
                                                 fetchedMsg.edit({embed: {
                                                     title: ":white_check_mark: Roulette",
                                                     description: `${msg.author.username} won and got **${bet * 2} Cash**. `,
@@ -115,68 +115,68 @@ exports.onLoad = api => {
                                                     }
                                                 }});
                                             });
-
+    
                                             let accountAfter = account.amount + (bet * 2);
-
+    
                                             // Set JSON information.
                                             accountDB[msg.author.id] = {
                                                 owner: msg.author.username,
                                                 amount: accountAfter,
                                                 lastClaimed: account.lastClaimed
                                             };
-
+    
                                             // Writes data to JSON.
                                             fsn.writeJSON("./accounts.json", accountDB, {
                                                 replacer: null,
                                                 spaces: 4
                                             });
                                         }, 3000);
-
+    
                                         // Logs in console.
                                         console.log(colors.green(`${msg.author.username} used the roulette command and won.`));
-                                    }else {
-                                        setTimeout(() => {
-                                            msg.channel.fetchMessages({
-                                                around: messageID,
-                                                limit: 1
-                                            }).then(messages => {
-                                                const fetchedMsg = messages.first();
-        
-                                                fetchedMsg.edit({embed: {
-                                                    title: ":x: Roulette",
-                                                    description: `${msg.author.username} lost and lost **${bet * 2} Cash**. `,
-                                                    fields: [{
-                                                        name: "Color Landed On",
-                                                        value: winningColor
-                                                    }, {
-                                                        name: "Number Landed On",
-                                                        value: number
-                                                    }],
-                                                    thumbnail: {
-                                                        url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
-                                                    }
-                                                }});
-                                            });
-
-                                            let accountAfter = account.amount - bet;
-
-                                            // Set JSON information.
-                                            accountDB[msg.author.id] = {
-                                                owner: msg.author.username,
-                                                amount: accountAfter,
-                                                lastClaimed: account.lastClaimed
-                                            };
-
-                                            // Writes data to JSON.
-                                            fsn.writeJSON("./accounts.json", accountDB, {
-                                                replacer: null,
-                                                spaces: 4
-                                            });
-
-                                            // Logs in console.
-                                            console.log(colors.green(`${msg.author.username} used the roulette command and lost.`));
-                                        }, 3000);
                                     }
+                                }else {
+                                    setTimeout(() => {
+                                        msg.channel.fetchMessages({
+                                            around: messageID,
+                                            limit: 1
+                                        }).then(messages => {
+                                            const fetchedMsg = messages.first();
+
+                                            fetchedMsg.edit({embed: {
+                                                title: ":x: Roulette",
+                                                description: `${msg.author.username} lost and lost **${bet * 2} Cash**. `,
+                                                fields: [{
+                                                    name: "Color Landed On",
+                                                    value: winningColor
+                                                }, {
+                                                    name: "Number Landed On",
+                                                    value: number
+                                                }],
+                                                thumbnail: {
+                                                    url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+                                                }
+                                            }});
+                                        });
+
+                                        let accountAfter = account.amount - (bet * 2);
+
+                                        // Set JSON information.
+                                        accountDB[msg.author.id] = {
+                                            owner: msg.author.username,
+                                            amount: accountAfter,
+                                            lastClaimed: account.lastClaimed
+                                        };
+
+                                        // Writes data to JSON.
+                                        fsn.writeJSON("./accounts.json", accountDB, {
+                                            replacer: null,
+                                            spaces: 4
+                                        });
+
+                                        // Logs in console.
+                                        console.log(colors.green(`${msg.author.username} used the roulette command and lost.`));
+                                    }, 3000);
                                 }
                             });
                         }else {
