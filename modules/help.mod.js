@@ -33,6 +33,9 @@ exports.onLoad = api => {
                 name: "ping",
                 value: "Pong!",
             }, {
+                name: "private",
+                value: "Prevent money being given to you and taken from you.",
+            }, {
                 name: "roulette [red / black / green] [Amount]",
                 value: "Spins a roulette wheel."
             }, {
