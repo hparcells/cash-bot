@@ -8,3 +8,10 @@ A discord bot for money and gambling.
 
 ## Invite
 https://discordapp.com/oauth2/authorize?client_id=487411926008201246&permissions=36825152&scope=bot
+
+## Server
+https://discord.gg/fDePjsc
+
+## Roadmap
+- Add new ways of gambling and getting money.
+- Add new ways of taking money from people >:)
