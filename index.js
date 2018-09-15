@@ -39,20 +39,4 @@ bot.on("ready", () => {
     bot.client.on("guildDelete", (guild) => {
         console.log(colors.green(`Left Guild, ${guild.name}`));
     });
-
-    // React
-    bot.client.on("message", message => {
-        let emoji = Math.floor(Math.random() * 3) + 1;
-        let random = Math.floor(Math.random() * 10) + 1;
-
-        if(message.author.id !== 487411926008201246) {
-            if(random === 1) {
-                switch(emoji) {
-                    case 1: message.react("💰"); break;
-                    case 2: message.react("🤑"); break;
-                    case 3: message.react("💸"); break;
-                }
-            }
-        }
-    });
 });
