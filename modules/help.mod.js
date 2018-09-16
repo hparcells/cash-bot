@@ -21,6 +21,9 @@ exports.onLoad = api => {
                 name: "help",
                 value: "This menu.",
             }, {
+                name: "invite",
+                value: "Gets the invite for the bot and support server.",
+            }, {
                 name: "new",
                 value: "Creates a new account.",
             }, {
@@ -39,6 +42,9 @@ exports.onLoad = api => {
                 name: "roulette [red / black / green] [Amount]",
                 value: "Spins a roulette wheel."
             }, {
+                name: "servers",
+                value: "Gets the amount of servers this bot is in."
+            },{
                 name: "slots [Amount]",
                 value: "Use the slot machine."
             }, {
