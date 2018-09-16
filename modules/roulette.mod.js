@@ -24,13 +24,13 @@ exports.onLoad = api => {
                             let winningColor = undefined;
 
                             // Sends message.
-                        msg.channel.send({embed: {
-                            title: ":question: Roulette",
-                            description: `${msg.author.username} spins the roulette wheel.`,
-                            thumbnail: {
-                                url: "http://pngimg.com/uploads/roulette/roulette_PNG12.png"
-                            }
-                        }}).then((m) => {
+                            msg.channel.send({embed: {
+                                title: ":question: Roulette",
+                                description: `${msg.author.username} spins the roulette wheel.`,
+                                thumbnail: {
+                                    url: "http://pngimg.com/uploads/roulette/roulette_PNG12.png"
+                                }
+                            }}).then((m) => {
                                 let messageID = m.id;
 
                                 if((number >= 1 && number <= 10) || (number >= 19 && number <= 28)) {
@@ -69,7 +69,7 @@ exports.onLoad = api => {
                                                         value: number
                                                     }],
                                                     thumbnail: {
-                                                        url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+                                                        url: "https://sometag.org/_assets/emoji/twitter/white-heavy-check-mark_2705.png"
                                                     }
                                                 }});
                                             });
