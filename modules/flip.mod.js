@@ -32,7 +32,7 @@ exports.onLoad = api => {
                                 title: ":question: Flip",
                                 description: `${msg.author.username} flips a coin.`,
                                 thumbnail: {
-                                    url: "https://banner2.kisspng.com/20180411/tse/kisspng-united-states-penny-lincoln-cent-coin-nickel-coin-stack-5acde8de7ea9a5.5191343215234439345188.jpg"
+                                    url: "http://numismatics.org/pocketchange/wp-content/uploads/sites/3/Penny-obverse.png"
                                 }
                             }}).then((m) => {
                                 let messageID = m.id;
