@@ -18,6 +18,9 @@ exports.onLoad = api => {
                 name: "fiftyfifty [Amount]",
                 value: "Has a fifty fifty chance of giving you the amount, or taking it from you.",
             }, {
+                name: "flip [heads / tails] [Amount]",
+                value: "Flips a coin.",
+            }, {
                 name: "help",
                 value: "This menu.",
             }, {
