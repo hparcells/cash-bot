@@ -1,4 +1,6 @@
 # CashBot
+[![Discord Bots](https://discordbots.org/api/widget/487411926008201246.png)](https://discordbots.org/bot/487411926008201246)
+
 ![status](https://img.shields.io/badge/status-active-brightgreen.svg)
 ![maintained](https://img.shields.io/badge/maintained-yes-brightgreen.svg)
 
