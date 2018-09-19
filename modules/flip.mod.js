@@ -46,7 +46,7 @@ exports.onLoad = api => {
                                             const fetchedMsg = messages.first();
 
                                             fetchedMsg.edit({embed: {
-                                                title: ":white_check_mark:  Flip",
+                                                title: ":white_check_mark: Flip",
                                                 description: `${msg.author.username} flipped a coin and won.`,
                                                 fields: [{
                                                     name: "Side Landed On",
@@ -167,7 +167,7 @@ exports.onLoad = api => {
                 }});
 
                 // Logs in console.
-                console.log(colors.red(`${msg.author.username} didn't have an account to run the Flip command.`));
+                console.log(colors.red(`${msg.author.username} didn't have an account to run the flip command.`));
             }
         });
 
