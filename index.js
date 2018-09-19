@@ -25,7 +25,8 @@ bot.on("ready", () => {
         "Withdrawing Money",
         "Betting", 
         "Counting Money",
-        `in ${bot.client.guilds.size} Guilds`
+        `in ${bot.client.guilds.size} Guilds`,
+        "$help"
     ];
 
     setInterval(() => {
