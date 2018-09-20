@@ -20,7 +20,7 @@ bot.on("ready", () => {
     console.log(colors.green(`In ${bot.client.guilds.size} Guilds.`));
 
     // Activities  
-    const activitiesList = [
+    let activitiesList = [
         "Depositing Money", 
         "Withdrawing Money",
         "Betting", 
@@ -37,10 +37,28 @@ bot.on("ready", () => {
     //Joined Guild
     bot.client.on("guildCreate", (guild) => {   
         console.log(colors.green(`Joined New Guild, ${guild.name}`));
+
+        activitiesList = [
+            "Depositing Money", 
+            "Withdrawing Money",
+            "Betting", 
+            "Counting Money",
+            `in ${bot.client.guilds.size} Guilds`,
+            "$help"
+        ];
     });
 
     //Left Guild
     bot.client.on("guildDelete", (guild) => {
         console.log(colors.green(`Left Guild, ${guild.name}`));
+
+        activitiesList = [
+            "Depositing Money", 
+            "Withdrawing Money",
+            "Betting", 
+            "Counting Money",
+            `in ${bot.client.guilds.size} Guilds`,
+            "$help"
+        ];
     });
 });
