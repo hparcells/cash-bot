@@ -17,3 +17,4 @@ https://discord.gg/fDePjsc
 ## Roadmap
 - Add new ways of gambling and getting money.
 - Add new ways of taking money from people >:)
+- New rewrite.

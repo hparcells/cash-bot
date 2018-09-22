@@ -17,7 +17,7 @@ exports.onLoad = api => {
                 url: "https://images.emojiterra.com/twitter/512px/1f4e9.png"
             }
         }});
-
+        
         // Logs in console.
         console.log(colors.green(`${msg.author.username} used the invite command.`));
     });

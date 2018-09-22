@@ -14,5 +14,5 @@ exports.onLoad = api => {
 
         // Logs in console.
         console.log(colors.green(`${msg.author.username} used the servers command.`));
-    })
+    });
 };

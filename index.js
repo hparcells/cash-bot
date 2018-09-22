@@ -3,7 +3,7 @@ const colors = require("colors");
 const fs = require("fs");
 
 const Sentry = require('@sentry/node');
-Sentry.init({ dsn: 'https://a9cce6dd3f334f73ad11dd8a6c76cacf@sentry.io/1283691' });
+Sentry.init({ dsn: "https://a9cce6dd3f334f73ad11dd8a6c76cacf@sentry.io/1283691" });
 
 require("dotenv").config();
 

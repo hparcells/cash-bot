@@ -17,7 +17,7 @@ exports.onLoad = api => {
             if(Math.sign(timeLeft) === 1) {
                 stringTimeLeft = `${hours} hours, ${minutes} minutes, and ${seconds} seconds.`;
             }else {
-                stringTimeLeft = "Ready to Claim!"
+                stringTimeLeft = "Ready to Claim!";
             }
 
             if(account !== undefined) {

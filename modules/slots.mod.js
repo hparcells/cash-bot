@@ -28,7 +28,7 @@ exports.onLoad = api => {
                             description: `${msg.author.username} uses the slot machine.`,
                             fields: [{
                                 name: "The Machine",
-                                value: `? : ? : ?`
+                                value: "? : ? : ?"
                             }],
                             thumbnail: {
                                 url: "https://images.emojiterra.com/twitter/512px/1f3b0.png"

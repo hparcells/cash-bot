@@ -35,7 +35,7 @@ exports.onLoad = api => {
 
                                 if((number >= 1 && number <= 10) || (number >= 19 && number <= 28)) {
                                     if(isEven(number)) {
-                                        winningColor = "black"
+                                        winningColor = "black";
                                     }else {
                                         winningColor = "red";
                                     }
@@ -46,7 +46,7 @@ exports.onLoad = api => {
                                         winningColor = "black"
                                     }
                                 }else if(number === 0) {
-                                    winningColor = "green"
+                                    winningColor = "green";
                                 }
 
                                 if(color === winningColor) {
