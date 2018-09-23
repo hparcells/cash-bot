@@ -6,7 +6,7 @@ const database = require("../database");
 exports.id = "wallet";
 
 exports.onLoad = api => {
-    api.commands.add("wallet", (msg) => {
+    api.commands.add("wallet", async (msg) => {
         if(await database.hasAccount(msg.author.id)) {
             r.table("accounts").get(msg.author.id).run(rethink.connection, function(err, result) {
                 if(err) {

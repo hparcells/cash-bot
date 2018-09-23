@@ -10,7 +10,7 @@ exports.onLoad = api => {
         // Checks if account already exists.
         if(!await database.hasAccount(msg.author.id)) {
             // Create new account.
-            database.setBalance(msg.author, 10);
+            database.setBalance(msg.author, 10, Date.now() - 86400000, false);
 
             // Send message.
             msg.channel.send({embed: {

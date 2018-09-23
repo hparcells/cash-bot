@@ -6,12 +6,14 @@ module.exports = {
         return await r.table("accounts").getAll(id).count().eq(1).run(rethink.connection);
     },
 
-    setBalance(author, amount) {
+    setBalance(author, amount, lastClaimed, private) {
         r.table("accounts").insert(
             {
                 id: author.id,
                 username: author.username,
-                amount: amount
+                amount: amount,
+                lastClaimed: lastClaimed,
+                private: private
             },
             {conflict: "update"}
         ).run(rethink.connection, function(err) {
