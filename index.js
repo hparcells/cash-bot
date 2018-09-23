@@ -16,7 +16,9 @@ r.connect({host: process.env.HOST, port: 28015, db: "cash_bot"}, function(err, c
 
     console.log(colors.green("[Database] Connected"));
 }).then(() => {
-    module.exports = connection;
+    module.exports = {
+        connection
+    };
 
     console.log(colors.green("[Bot] Loading Modules"));
 
