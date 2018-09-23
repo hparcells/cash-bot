@@ -1,40 +1,28 @@
 const colors = require("colors");
 const r = require("rethinkdb");
 
-const database = require("../index");
-const check = require("../checks");
+const database = require("../database");
 
 exports.id = "new";
 
 exports.onLoad = api => {
     api.commands.add("new", async (msg) => {
         // Checks if account already exists.
-        if(!await check.hasAccount(msg.author.id)) {
+        if(!await database.hasAccount(msg.author.id)) {
             // Create new account.
-            r.table("accounts").insert(
-                {
-                    id: msg.author.id,
-                    username: msg.author.username,
-                    amount: 10
-                },
-                {conflict: "update"}
-            ).run(database.connection, function(err) {
-                if(err) {
-                    throw err;d
+            database.setBalance(msg.author, 10);
+
+            // Send message.
+            msg.channel.send({embed: {
+                title: ":white_check_mark: New Account",
+                description: "You have successfully created your new account. You have been given **10 Cash** to start with.",
+                thumbnail: {
+                    url: "https://sometag.org/_assets/emoji/twitter/white-heavy-check-mark_2705.png"
                 }
+            }});
 
-                // Send message.
-                msg.channel.send({embed: {
-                    title: ":white_check_mark: New Account",
-                    description: "You have successfully created your new account. You have been given **10 Cash** to start with.",
-                    thumbnail: {
-                        url: "https://sometag.org/_assets/emoji/twitter/white-heavy-check-mark_2705.png"
-                    }
-                }});
-
-                // Logs in console.
-                console.log(colors.green(`[Bot] ${msg.author.username} created a new account.`));
-            });
+            // Logs in console.
+            console.log(colors.green(`[Bot] ${msg.author.username} created a new account.`));
         }else {
             // Sends message.
             msg.channel.send({embed: {
