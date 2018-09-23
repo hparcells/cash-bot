@@ -7,12 +7,12 @@ exports.id = "delete";
 
 exports.onLoad = api => {
     api.commands.add("delete", (msg) => {
-        r.table("accounts").get(msg.author.id).run(rethink.connection, function(err, result) {
+        r.table("accounts").get(msg.author.id).run(rethink.connection, async function(err, result) {
             if(err) {
                 throw err;
             }
 
-            if(database.hasAccount(msg.author.id)) {
+            if(await database.hasAccount(msg.author.id)) {
                 if(result.amount >= 50) {
                     database.deleteAccount(msg.author.id);
 
