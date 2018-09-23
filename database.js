@@ -19,5 +19,9 @@ module.exports = {
                 throw err;
             }
         });
+    },
+
+    deleteAccount(userID) {
+        r.table("accounts").get(userID).delete().run(rethink.connection);
     }
 }
