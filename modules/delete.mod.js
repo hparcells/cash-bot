@@ -13,7 +13,7 @@ exports.onLoad = api => {
             }
 
             if(database.hasAccount(msg.author.id)) {
-                if(!result.amount < 50) {
+                if(result.amount >= 50) {
                     database.deleteAccount(msg.author.id);
 
                     // Sends message.
