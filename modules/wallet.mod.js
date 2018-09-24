@@ -8,12 +8,13 @@ exports.id = "wallet";
 exports.onLoad = api => {
     api.commands.add("wallet", async (msg) => {
         if(await database.hasAccount(msg.author.id)) {
-            let timeLeft = (database.getLastClaimed(msg.author.id) + 86400000) - parseInt(Date.now());
+            let timeLeft = (await database.getLastClaimed(msg.author.id) + 86400000) - parseInt(Date.now());
             let seconds = parseInt((timeLeft / 1000) % 60);
             let minutes = parseInt((timeLeft / (1000 * 60)) % 60);
             let hours = parseInt((timeLeft / (1000 * 60 * 60)) % 24);
 
             let stringTimeLeft = undefined;
+            console.log(Math.sign(timeLeft))
             if(Math.sign(timeLeft) === 1) {
                 stringTimeLeft = `${hours} hours, ${minutes} minutes, and ${seconds} seconds.`;
             }else {
