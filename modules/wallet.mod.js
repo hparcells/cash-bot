@@ -8,6 +8,7 @@ exports.id = "wallet";
 exports.onLoad = api => {
     api.commands.add("wallet", async (msg) => {
         if(await database.hasAccount(msg.author.id)) {
+            // Gets time until next daily.
             let timeLeft = (await database.getLastClaimed(msg.author.id) + 86400000) - parseInt(Date.now());
             let seconds = parseInt((timeLeft / 1000) % 60);
             let minutes = parseInt((timeLeft / (1000 * 60)) % 60);

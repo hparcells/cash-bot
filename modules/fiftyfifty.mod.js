@@ -26,6 +26,7 @@ exports.onLoad = api => {
                         if(win === 1) {
                             let amount = await database.getAmount(msg.author.id) + bet;
 
+                            // Writes to database.
                             database.setBalance(msg.author, amount, await database.getLastClaimed(msg.author.id), await database.getPrivateStatus(msg.author.id));
 
                             // Send message.
@@ -42,6 +43,7 @@ exports.onLoad = api => {
                         }else {
                             let amount = await database.getAmount(msg.author.id) - bet;
 
+                            // Writes to database.
                             database.setBalance(msg.author, amount, await database.getLastClaimed(msg.author.id), await database.getPrivateStatus(msg.author.id));
 
                             // Send message.

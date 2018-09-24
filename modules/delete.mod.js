@@ -9,6 +9,7 @@ exports.onLoad = api => {
     api.commands.add("delete", async (msg) => {
         if(await database.hasAccount(msg.author.id)) {
             if(await database.getAmount(msg.author.id) >= 50) {
+                // Writes to database.
                 database.deleteAccount(msg.author.id);
 
                 // Sends message.

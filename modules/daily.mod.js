@@ -27,6 +27,7 @@ exports.onLoad = api => {
 
                     let amount = result.amount + 20;
 
+                    // Writes to database.
                     database.setBalance(msg.author, amount, Date.now(), result.private);
 
                     // Logs in console.
