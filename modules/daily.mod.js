@@ -11,7 +11,7 @@ exports.onLoad = api => {
             if(err) {
                 throw err;
             }
-
+            
             // Checks if account already exists.
             if(await database.hasAccount(msg.author.id)) {
                 // Checks if the time is right to claim.

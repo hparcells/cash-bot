@@ -44,7 +44,7 @@ exports.onLoad = api => {
                 // Sends message.
                 msg.channel.send({embed: {
                     title: ":x: Delete Account",
-                    description: "You do not have an acconut to delete.",
+                    description: "You do not have an account to delete.",
                     thumbnail: {
                         url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
                     }

@@ -25,5 +25,24 @@ module.exports = {
 
     deleteAccount(userID) {
         r.table("accounts").get(userID).delete().run(rethink.connection);
+    },
+
+    async getAmount(userID) {
+        return await r.table("accounts").get(userID).getField("amount").run(rethink.connection);
+    },  
+    
+    async getLastClaimed(userID) {
+        return await r.table("accounts").get(userID).getField("lastClaimed").run(rethink.connection);
+    },
+
+    async getPrivateStatus(userID) {
+        return await r.table("accounts").get(userID).getField("private").run(rethink.connection);
+    },
+
+    async getTimeUntilNextDaily(userID) {
+        let lastClaimed = await module.exports.getLastClaimed(userID);
+        let nextClaimTime = lastClaimed + 86400000;
+
+        return nextClaimTime - parseInt(Date.now());
     }
 }
