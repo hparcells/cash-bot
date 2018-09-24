@@ -14,7 +14,6 @@ exports.onLoad = api => {
             let hours = parseInt((timeLeft / (1000 * 60 * 60)) % 24);
 
             let stringTimeLeft = undefined;
-            console.log(Math.sign(timeLeft))
             if(Math.sign(timeLeft) === 1) {
                 stringTimeLeft = `${hours} hours, ${minutes} minutes, and ${seconds} seconds.`;
             }else {
