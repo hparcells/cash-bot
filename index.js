@@ -7,6 +7,9 @@ require("dotenv").config();
 
 let connection = undefined;
 
+const Sentry = require('@sentry/node');
+Sentry.init({ dsn: "https://a9cce6dd3f334f73ad11dd8a6c76cacf@sentry.io/1283691" });
+
 r.connect({host: process.env.HOST, port: 28015, db: "cash_bot"}, function(err, conn) {
     if(err) {
         throw err;
@@ -78,7 +81,3 @@ r.connect({host: process.env.HOST, port: 28015, db: "cash_bot"}, function(err, c
         });
     });    
 });
-
-// const Sentry = require('@sentry/node');
-// Sentry.init({ dsn: "https://a9cce6dd3f334f73ad11dd8a6c76cacf@sentry.io/1283691" });
-
