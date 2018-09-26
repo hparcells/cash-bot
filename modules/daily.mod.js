@@ -18,7 +18,7 @@ exports.onLoad = api => {
                     }
                 }});
 
-                let amount = await database.getLastClaimed(msg.author.id) + 20;
+                let amount = await database.getAmount(msg.author.id) + 20;
 
                 // Writes to database.
                 database.setBalance(msg.author, amount, Date.now(), await database.getPrivateStatus(msg.author.id));

@@ -109,7 +109,7 @@ exports.onLoad = api => {
                                         database.setBalance(msg.author, accountAfter, await database.getLastClaimed(msg.author.id), await database.getPrivateStatus(msg.author.id));
 
                                         // Logs in console.
-                                        console.log(colors.green(`${msg.author.username} used the slots command and lost.`));
+                                        console.log(colors.green(`[Bot] ${msg.author.username} used the slots command and lost.`));
                                     }else {
                                         // Sets multiplier.
                                         if(theMatches === 2) {
@@ -144,7 +144,7 @@ exports.onLoad = api => {
                                         database.setBalance(msg.author, accountAfter, await database.getLastClaimed(msg.author.id), await database.getPrivateStatus(msg.author.id));
 
                                         // Logs in console.
-                                        console.log(colors.green(`${msg.author.username} used the slots command and won.`));
+                                        console.log(colors.green(`[Bot] ${msg.author.username} used the slots command and won.`));
                                     }
                                 }, 1000);
                             }, 1000);
@@ -160,7 +160,7 @@ exports.onLoad = api => {
                         }});
 
                         // Logs in console.
-                        console.log(colors.red(`${msg.author.username} didn't have enough Cash to run the slots command.`));
+                        console.log(colors.red(`[Bot] ${msg.author.username} didn't have enough Cash to run the slots command.`));
                     }
                 }else {
                     // Sends message.
@@ -173,7 +173,7 @@ exports.onLoad = api => {
                     }});
     
                     // Logs in console.
-                    console.log(colors.red(`${msg.author.username} gave a negative number or zero for the slots command.`));
+                    console.log(colors.red(`[Bot] ${msg.author.username} gave a negative number or zero for the slots command.`));
                 }
             }else {
                 // Sends message.
@@ -186,7 +186,7 @@ exports.onLoad = api => {
                 }});
 
                 // Logs in console.
-                console.log(colors.red(`${msg.author.username} gave an invalid for the slots command.`));
+                console.log(colors.red(`[Bot] ${msg.author.username} gave an invalid for the slots command.`));
             }
         }else {
             // Sends message.
@@ -199,7 +199,7 @@ exports.onLoad = api => {
             }});
     
             // Logs in console.
-            console.log(colors.red(`${msg.author.username} didn't have an account to run the slots command.`));
+            console.log(colors.red(`[Bot] ${msg.author.username} didn't have an account to run the slots command.`));
         }
     });
 };
