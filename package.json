@@ -1,5 +1,5 @@
 {
-  "name": "cash",
+  "name": "cashbot",
   "version": "1.0.0",
   "description": "A discord bot for money and gambling.",
   "main": "index.js",
@@ -11,12 +11,21 @@
     "fs": "0.0.1-security",
     "fs-nextra": "^0.3.7",
     "nekrawsd-money-api": "^2.0.1",
-    "reputation-core": "^1.0.6"
+    "reputation-core": "^1.0.6",
+    "rethinkdb": "^2.3.3"
   },
   "devDependencies": {},
   "scripts": {
     "start": "node index.js"
   },
   "author": "Hunter Parcells",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hparcells/CashBot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hparcells/CashBot/issues"
+  },
+  "homepage": "https://github.com/hparcells/CashBot#readme"
 }
