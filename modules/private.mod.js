@@ -16,6 +16,9 @@ exports.onLoad = api => {
                     url: "https://images.emojiterra.com/twitter/v11/512px/1f513.png"
                 }
             }});
+
+            // Logs in console.
+            console.log(colors.green(`${msg.author.username} has publicised their account.`));
         }else {
             // Sends message.
             msg.channel.send({embed: {
@@ -25,6 +28,9 @@ exports.onLoad = api => {
                     url: "https://png2.kisspng.com/20180511/rrw/kisspng-emoji-padlock-troy-email-5af611386fc727.2510723615260757044579.png"
                 }
             }});
+
+            // Logs in console.
+            console.log(colors.green(`${msg.author.username} has privated their account.`));
         }
 
         // Write data to database.
