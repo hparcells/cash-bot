@@ -1,6 +1,4 @@
 const colors = require("colors");
-const r = require("rethinkdb");
-const rethinkdb = require("../index");
 const database = require("../database");
 
 exports.id = "flip";

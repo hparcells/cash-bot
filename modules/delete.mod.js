@@ -1,7 +1,5 @@
 const colors = require("colors");
 const database = require("../database");
-const r = require("rethinkdb");
-const rethink = require("../index");
 
 exports.id = "delete";
 
