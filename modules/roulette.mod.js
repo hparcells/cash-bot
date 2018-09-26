@@ -59,33 +59,57 @@ exports.onLoad = api => {
 
                             const fetchedMsg = messages.first();
 
-                            if(color === winningColor) {
-                                if(winningColor === "green") {
-                                    fetchedMsg.edit({embed: {
-                                        title: ":x: Roulette",
-                                        description: `${msg.author.username} won and got **${bet * 5} Cash**. `,
-                                        fields: [{
-                                            name: "Color Landed On",
-                                            value: winningColor
-                                        }, {
-                                            name: "Number Landed On",
-                                            value: number
-                                        }],
-                                        thumbnail: {
-                                            url: "https://sometag.org/_assets/emoji/twitter/white-heavy-check-mark_2705.png"
-                                        }
-                                    }});
-
-                                    let accountAfter = await database.getAmount(msg.author.id) + (bet * 5);
-
-                                    database.setBalance(msg.author, accountAfter, await database.getLastClaimed(msg.author.id), await database.getPrivateStatus(msg.author.id));
-
-                                    // Logs in console.
-                                    console.log(colors.green(`[Bot] ${msg.author.username} used the roulette command and won.`));
+                            setTimeout(async () => {
+                                if(color === winningColor) {
+                                    if(winningColor === "green") {
+                                        fetchedMsg.edit({embed: {
+                                            title: ":x: Roulette",
+                                            description: `${msg.author.username} won and got **${bet * 5} Cash**. `,
+                                            fields: [{
+                                                name: "Color Landed On",
+                                                value: winningColor
+                                            }, {
+                                                name: "Number Landed On",
+                                                value: number
+                                            }],
+                                            thumbnail: {
+                                                url: "https://sometag.org/_assets/emoji/twitter/white-heavy-check-mark_2705.png"
+                                            }
+                                        }});
+    
+                                        let accountAfter = await database.getAmount(msg.author.id) + (bet * 5);
+    
+                                        database.setBalance(msg.author, accountAfter, await database.getLastClaimed(msg.author.id), await database.getPrivateStatus(msg.author.id));
+    
+                                        // Logs in console.
+                                        console.log(colors.green(`[Bot] ${msg.author.username} used the roulette command and won.`));
+                                    }else {
+                                        fetchedMsg.edit({embed: {
+                                            title: ":white_check_mark: Roulette",
+                                            description: `${msg.author.username} won and got **${bet * 2} Cash**. `,
+                                            fields: [{
+                                                name: "Color Landed On",
+                                                value: winningColor
+                                            }, {
+                                                name: "Number Landed On",
+                                                value: number
+                                            }],
+                                            thumbnail: {
+                                                url: "https://sometag.org/_assets/emoji/twitter/white-heavy-check-mark_2705.png"
+                                            }
+                                        }});
+    
+                                        let accountAfter = await database.getAmount(msg.author.id) - (bet * 2);
+    
+                                        database.setBalance(msg.author, accountAfter, await database.getLastClaimed(msg.author.id), await database.getPrivateStatus(msg.author.id));
+                                        
+                                        // Logs in console.
+                                        console.log(colors.green(`[Bot] ${msg.author.username} used the roulette command and won.`));
+                                    }
                                 }else {
                                     fetchedMsg.edit({embed: {
-                                        title: ":white_check_mark: Roulette",
-                                        description: `${msg.author.username} won and got **${bet * 2} Cash**. `,
+                                        title: ":x: Roulette",
+                                        description: `${msg.author.username} lost and lost **${bet * 2} Cash**. `,
                                         fields: [{
                                             name: "Color Landed On",
                                             value: winningColor
@@ -94,40 +118,18 @@ exports.onLoad = api => {
                                             value: number
                                         }],
                                         thumbnail: {
-                                            url: "https://sometag.org/_assets/emoji/twitter/white-heavy-check-mark_2705.png"
+                                            url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
                                         }
                                     }});
-
+    
                                     let accountAfter = await database.getAmount(msg.author.id) - (bet * 2);
-
+    
                                     database.setBalance(msg.author, accountAfter, await database.getLastClaimed(msg.author.id), await database.getPrivateStatus(msg.author.id));
-                                    
+    
                                     // Logs in console.
-                                    console.log(colors.green(`[Bot] ${msg.author.username} used the roulette command and won.`));
+                                    console.log(colors.green(`[Bot] ${msg.author.username} used the roulette command and lost.`));
                                 }
-                            }else {
-                                fetchedMsg.edit({embed: {
-                                    title: ":x: Roulette",
-                                    description: `${msg.author.username} lost and lost **${bet * 2} Cash**. `,
-                                    fields: [{
-                                        name: "Color Landed On",
-                                        value: winningColor
-                                    }, {
-                                        name: "Number Landed On",
-                                        value: number
-                                    }],
-                                    thumbnail: {
-                                        url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
-                                    }
-                                }});
-
-                                let accountAfter = await database.getAmount(msg.author.id) - (bet * 2);
-
-                                database.setBalance(msg.author, accountAfter, await database.getLastClaimed(msg.author.id), await database.getPrivateStatus(msg.author.id));
-
-                                // Logs in console.
-                                console.log(colors.green(`[Bot] ${msg.author.username} used the roulette command and lost.`));
-                            }
+                            }, 3000);
                         }else {
                             // Sends message.
                             msg.channel.send({embed: {
