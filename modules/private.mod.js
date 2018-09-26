@@ -18,7 +18,7 @@ exports.onLoad = api => {
             }});
 
             // Logs in console.
-            console.log(colors.green(`${msg.author.username} has publicised their account.`));
+            console.log(colors.green(`[Bot] ${msg.author.username} has publicised their account.`));
         }else {
             // Sends message.
             msg.channel.send({embed: {
@@ -30,7 +30,7 @@ exports.onLoad = api => {
             }});
 
             // Logs in console.
-            console.log(colors.green(`${msg.author.username} has privated their account.`));
+            console.log(colors.green(`[Bot] ${msg.author.username} has privated their account.`));
         }
 
         // Write data to database.

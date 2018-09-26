@@ -24,7 +24,7 @@ exports.onLoad = api => {
                 database.setBalance(msg.author, amount, Date.now(), await database.getPrivateStatus(msg.author.id));
 
                 // Logs in console.
-                console.log(colors.green(`${msg.author.username} used the daily command and got their daily cash.`));
+                console.log(colors.green(`[Bot] ${msg.author.username} used the daily command and got their daily cash.`));
             }else {
                 let timeLeft = (await database.getLastClaimed(msg.author.id) + 86400000) - Date.now();
                 let seconds = parseInt((timeLeft / 1000) % 60);
@@ -40,7 +40,7 @@ exports.onLoad = api => {
                 }});
 
                 // Logs in console.
-                console.log(colors.red(`${msg.author.username} used the daily command and didn't get their daily cash.`));
+                console.log(colors.red(`[Bot] ${msg.author.username} used the daily command and didn't get their daily cash.`));
             }
         }else {
             // Sends message.
@@ -53,7 +53,7 @@ exports.onLoad = api => {
             }});
 
             // Logs in console.
-            console.log(colors.red(`${msg.author.username} didn't have an account to run the daily command.`));
+            console.log(colors.red(`[Bot] ${msg.author.username} didn't have an account to run the daily command.`));
         }
     });
 };

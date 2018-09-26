@@ -42,7 +42,7 @@ exports.onLoad = api => {
                                         }});
         
                                         // Logs in console.
-                                        console.log(colors.green(`${msg.author.username} pickpocketed ${api.client.users.get(recipientID).username} and succeeded.`));
+                                        console.log(colors.green(`[Bot] ${msg.author.username} pickpocketed ${api.client.users.get(recipientID).username} and succeeded.`));
                                     }else {
                                         let accountAfter = Math.round(await database.getAmount(msg.author.id) - (await database.getAmount(msg.author.id) / 10));
                                         let recipientAfter = Math.round(await database.getAmount(recipientID) + (await database.getAmount(msg.author.id) / 10));
@@ -61,7 +61,7 @@ exports.onLoad = api => {
                                         }});
                                         
                                         // Logs in console.
-                                        console.log(colors.green(`${msg.author.username} pickpocketed ${api.client.users.get(recipientID).username} and failed.`));
+                                        console.log(colors.green(`[Bot] ${msg.author.username} pickpocketed ${api.client.users.get(recipientID).username} and failed.`));
                                     }
                                 }else {
                                     // Sends message.
@@ -87,7 +87,7 @@ exports.onLoad = api => {
                                 }});
 
                                 // Logs in console.
-                                console.log(colors.red(`${msg.author.username} didn't have enough Cash to run the fiftyfifty command.`));
+                                console.log(colors.red(`[Bot] ${msg.author.username} didn't have enough Cash to run the fiftyfifty command.`));
                             }
                         }else {
                             // Sends message.
@@ -100,7 +100,7 @@ exports.onLoad = api => {
                             }});
 
                             // Logs in console.
-                            console.log(colors.red(`${msg.author.username} tried to pickpocket themself.`));
+                            console.log(colors.red(`[Bot] ${msg.author.username} tried to pickpocket themself.`));
                         }
                     }else {
                         // Sends message.
@@ -113,7 +113,7 @@ exports.onLoad = api => {
                         }});
 
                         // Logs in console.
-                        console.log(colors.red(`${msg.author.username} couldn't pickpocket ${api.client.users.get(recipientID).username} because their account is privated.`));
+                        console.log(colors.red(`[Bot] ${msg.author.username} couldn't pickpocket ${api.client.users.get(recipientID).username} because their account is privated.`));
                     }
                 }else {
                     // Sends message.
@@ -152,7 +152,7 @@ exports.onLoad = api => {
             }});
 
             // Logs in console.
-            console.log(colors.red(`${msg.author.username} didn't have an account to run the pay command.`));
+            console.log(colors.red(`[Bot] ${msg.author.username} didn't have an account to run the pay command.`));
         }
     });
 };

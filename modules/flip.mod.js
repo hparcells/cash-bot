@@ -69,7 +69,7 @@ exports.onLoad = api => {
                                     database.setBalance(msg.author, accountAfter, await database.getLastClaimed(msg.author.id), await database.getPrivateStatus(msg.author.id));
 
                                     // Logs in console.
-                                    console.log(colors.green(`${msg.author.username} flipped a coin and won.`));
+                                    console.log(colors.green(`[Bot] ${msg.author.username} flipped a coin and won.`));
                                 }else {
                                     // Edit the message.
                                     fetchedMsg.edit({embed: {
@@ -93,7 +93,7 @@ exports.onLoad = api => {
                                     database.setBalance(msg.author, accountAfter, await database.getLastClaimed(msg.author.id), await database.getPrivateStatus(msg.author.id));
 
                                     // Logs in console.
-                                    console.log(colors.green(`${msg.author.username} flipped a coin and lost.`));
+                                    console.log(colors.green(`[Bot] ${msg.author.username} flipped a coin and lost.`));
                                 }
                             }, 1000);
                         }else {
@@ -107,7 +107,7 @@ exports.onLoad = api => {
                             }});
 
                             // Logs in console.
-                            console.log(colors.red(`${msg.author.username} didn't have enough Cash to run the flip command.`));
+                            console.log(colors.red(`[Bot] ${msg.author.username} didn't have enough Cash to run the flip command.`));
                         }
                     }else {
                         // Sends message.
@@ -120,7 +120,7 @@ exports.onLoad = api => {
                         }});
 
                         // Logs in console.
-                        console.log(colors.red(`${msg.author.username} gave a negative number or zero for the flip command.`));
+                        console.log(colors.red(`[Bot] ${msg.author.username} gave a negative number or zero for the flip command.`));
                     }
                 }else {
                     // Sends message.
@@ -133,7 +133,7 @@ exports.onLoad = api => {
                     }});
     
                     // Logs in console.
-                    console.log(colors.red(`${msg.author.username} gave a invalid number for the flip command.`));
+                    console.log(colors.red(`[Bot] ${msg.author.username} gave a invalid number for the flip command.`));
                 }
             }else {
                 // Sends message.
@@ -146,7 +146,7 @@ exports.onLoad = api => {
                 }});
 
                 // Logs in console.
-                console.log(colors.red(`${msg.author.username} gave a invalid side for the flip command.`));
+                console.log(colors.red(`[Bot] ${msg.author.username} gave a invalid side for the flip command.`));
             }
         }else {
             // Sends message.
@@ -159,7 +159,7 @@ exports.onLoad = api => {
             }});
 
             // Logs in console.
-            console.log(colors.red(`${msg.author.username} didn't have an account to run the flip command.`));
+            console.log(colors.red(`[Bot] ${msg.author.username} didn't have an account to run the flip command.`));
         }
     });
 };

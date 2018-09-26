@@ -14,6 +14,6 @@ exports.onLoad = api => {
         }});
 
         // Logs in console.
-        console.log(colors.green(`${msg.author.username} used the ping command.`));
+        console.log(colors.green(`[Bot] ${msg.author.username} used the ping command.`));
     });
 };

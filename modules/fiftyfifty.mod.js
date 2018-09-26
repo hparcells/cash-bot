@@ -37,7 +37,7 @@ exports.onLoad = api => {
                             }});
 
                             // Logs in console.
-                            console.log(colors.green(`${msg.author.username} used the fiftyfifty command and won.`));
+                            console.log(colors.green(`[Bot] ${msg.author.username} used the fiftyfifty command and won.`));
                         }else {
                             let amount = await database.getAmount(msg.author.id) - bet;
 
@@ -54,7 +54,7 @@ exports.onLoad = api => {
                             }});
 
                             // Logs in console.
-                            console.log(colors.green(`${msg.author.username} used the fiftyfifty command and lost.`));
+                            console.log(colors.green(`[Bot] ${msg.author.username} used the fiftyfifty command and lost.`));
                         }
 
                     }else {
@@ -68,7 +68,7 @@ exports.onLoad = api => {
                         }});
 
                         // Logs in console.
-                        console.log(colors.red(`${msg.author.username} didn't have enough Cash to run the fiftyfifty command.`));
+                        console.log(colors.red(`[Bot] ${msg.author.username} didn't have enough Cash to run the fiftyfifty command.`));
                     }
                 }else {
                     // Sends message.
@@ -81,7 +81,7 @@ exports.onLoad = api => {
                     }});
 
                     // Logs in console.
-                    console.log(colors.red(`${msg.author.username} gave a negative number or zero for the fiftyfifty command.`));
+                    console.log(colors.red(`[Bot] ${msg.author.username} gave a negative number or zero for the fiftyfifty command.`));
                 }
             }else {
                 // Sends message.
@@ -94,7 +94,7 @@ exports.onLoad = api => {
                 }});
 
                 // Logs in console.
-                console.log(colors.red(`${msg.author.username} didn't give a valid number for the fiftyfifty command.`));
+                console.log(colors.red(`[Bot] ${msg.author.username} didn't give a valid number for the fiftyfifty command.`));
             }
         }else {
             // Sends message.
@@ -107,7 +107,7 @@ exports.onLoad = api => {
             }});
 
             // Logs in console.
-            console.log(colors.red(`${msg.author.username} didn't have an account to run the fiftyfifty command.`));
+            console.log(colors.red(`[Bot] ${msg.author.username} didn't have an account to run the fiftyfifty command.`));
         }
     });
 };

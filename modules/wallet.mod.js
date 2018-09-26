@@ -35,7 +35,7 @@ exports.onLoad = api => {
             }});
 
             // Logs in console.
-            console.log(colors.green(`${msg.author.username} used the wallet command.`));
+            console.log(colors.green(`[Bot] ${msg.author.username} used the wallet command.`));
         }else {
             // Sends message.
             msg.channel.send({embed: {
@@ -47,7 +47,7 @@ exports.onLoad = api => {
             }});
 
             // Logs in console.
-            console.log(colors.red(`${msg.author.username} didn't have an account to run the wallet command.`));
+            console.log(colors.red(`[Bot] ${msg.author.username} didn't have an account to run the wallet command.`));
         }
     });
 };

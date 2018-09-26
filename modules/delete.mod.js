@@ -20,7 +20,7 @@ exports.onLoad = api => {
                 }});
                 
                 // Logs in console.
-                console.log(colors.green(`${msg.author.username} deleted their account.`));
+                console.log(colors.green(`[Bot] ${msg.author.username} deleted their account.`));
             }else {
                 // Sends message.
                 msg.channel.send({embed: {
@@ -32,7 +32,7 @@ exports.onLoad = api => {
                 }});
 
                 // Logs in console.
-                console.log(colors.red(`${msg.author.username} didn't have enough Cash to delete their account.`));
+                console.log(colors.red(`[Bot] ${msg.author.username} didn't have enough Cash to delete their account.`));
             }
         }else {
             // Sends message.
@@ -45,7 +45,7 @@ exports.onLoad = api => {
             }});
 
             // Logs in console.
-            console.log(colors.red(`${msg.author.username} didn't have an account to delete.`));
+            console.log(colors.red(`[Bot] ${msg.author.username} didn't have an account to delete.`));
         }
     });
 };

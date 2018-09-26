@@ -46,7 +46,7 @@ exports.onLoad = api => {
                                         }});
 
                                         // Logs in console.
-                                        console.log(colors.green(`${msg.author.username} paid ${api.client.users.get(recipientID).username} ${args[1]} Cash.`));
+                                        console.log(colors.green(`[Bot] ${msg.author.username} paid ${api.client.users.get(recipientID).username} ${args[1]} Cash.`));
                                     }else {
                                         // Sends message.
                                         msg.channel.send({embed: {
@@ -58,7 +58,7 @@ exports.onLoad = api => {
                                         }});
     
                                         // Logs in console.
-                                        console.log(colors.red(`${msg.author.username} didn't have enough Cash to run the pay command.`));
+                                        console.log(colors.red(`[Bot] ${msg.author.username} didn't have enough Cash to run the pay command.`));
                                     }
                                 }else {
                                     // Sends message.
@@ -71,7 +71,7 @@ exports.onLoad = api => {
                                     }});
     
                                     // Logs in console.
-                                    console.log(colors.red(`${msg.author.username} gave a negative number or zero for the pay command.`));
+                                    console.log(colors.red(`[Bot] ${msg.author.username} gave a negative number or zero for the pay command.`));
                                 }
                             }else {
                                 // Sends message.
@@ -84,7 +84,7 @@ exports.onLoad = api => {
                                 }});
     
                                 // Logs in console.
-                                console.log(colors.red(`${msg.author.username} gave an invalid number for the pay command.`));
+                                console.log(colors.red(`[Bot] ${msg.author.username} gave an invalid number for the pay command.`));
                             }
                         }else {
                             // Sends message.
@@ -97,7 +97,7 @@ exports.onLoad = api => {
                             }});
 
                             // Logs in console.
-                            console.log(colors.red(`${msg.author.username} tried to pay themself.`));
+                            console.log(colors.red(`[Bot] ${msg.author.username} tried to pay themself.`));
                         }
                     }else {
                         // Sends message.
@@ -149,7 +149,7 @@ exports.onLoad = api => {
             }});
 
             // Logs in console.
-            console.log(colors.red(`${msg.author.username} didn't have an account to run the pay command.`));
+            console.log(colors.red(`[Bot] ${msg.author.username} didn't have an account to run the pay command.`));
         }
     });
 };
