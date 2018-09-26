@@ -1,17 +1,17 @@
 const colors = require("colors");
 const database = require("../database");
 
-exports.id = "pay";
+exports.id = "pickpocket";
 
 exports.onLoad = api => {
-    api.commands.add("pay", async (msg) => {
-        let args = msg.content.substring(5).split(" ");
+    api.commands.add("pickpocket", async (msg) => {
+        let args = msg.content.substring(12).split(" ");
         let recipientID = args[0].replace("<", "");
         recipientID = recipientID.replace("!", "");
         recipientID = recipientID.replace("@", "");
         recipientID = recipientID.replace(">", "");
-
-        let payment = Math.round(args[1]);
+        
+        let win = Math.floor(Math.random() * 10) + 1;
 
         // Checks if both users have an account.
         if(await database.hasAccount(msg.author.id)) {
@@ -21,88 +21,91 @@ exports.onLoad = api => {
                     if(!await database.getPrivateStatus(recipientID)) {
                         // Checks if recipient is the user.
                         if(msg.author.id !== api.client.users.get(recipientID).id) {
-                            // Checks if payment is valid.
-                            if(!isNaN(payment)) {
-                                // Checks if payment is more than 0;
-                                if(payment > 0) {
-                                    // Checks if user has enough money.
-                                    if(payment <= await database.getAmount(msg.author.id)) {
-                                        // Give money.
-                                        let accountAfter = await database.getAmount(msg.author.id) - payment;
-                                        let recipientAfter = await database.getAmount(recipientID) + payment;
+                            // Checks if both users have enough money.
+                            if(Math.round(await database.getAmount(msg.author.id) / 10) !== 0) {
+                                if(Math.round(await database.getAmount(recipientID) / 10) !== 0) {
+                                    if(win === 10) {
+                                        let accountAfter = Math.round(await database.getAmount(msg.author.id) + (await database.getAmount(recipientID) / 10));
+                                        let recipientAfter = Math.round(await database.getAmount(recipientID) - (await database.getAmount(recipientID) / 10));
 
-                                        
-                                        // // Write to database.
+                                        // Write data to JSON.
                                         database.setBalance(msg.author, accountAfter, await database.getLastClaimed(msg.author.id), await database.getPrivateStatus(msg.author.id));
                                         database.setBalance(api.client.users.get(recipientID), recipientAfter, await database.getLastClaimed(recipientID), await database.getPrivateStatus(recipientID));
 
                                         // Send message.
                                         msg.channel.send({embed: {
-                                            title: ":white_check_mark: Pay",
-                                            description: `You successfully paid ${api.client.users.get(recipientID).username} **${args[1]} Cash**.`,
+                                            title: ":white_check_mark: Pickpocket",
+                                            description: `You successfully pickpocketed ${api.client.users.get(recipientID).username} and got 10% of their money.`,
                                             thumbnail: {
                                                 url: "https://sometag.org/_assets/emoji/twitter/white-heavy-check-mark_2705.png"
                                             }
                                         }});
-
+        
                                         // Logs in console.
-                                        console.log(colors.green(`${msg.author.username} paid ${api.client.users.get(recipientID).username} ${args[1]} Cash.`));
+                                        console.log(colors.green(`${msg.author.username} pickpocketed ${api.client.users.get(recipientID).username} and succeeded.`));
                                     }else {
-                                        // Sends message.
+                                        let accountAfter = Math.round(await database.getAmount(msg.author.id) - (await database.getAmount(msg.author.id) / 10));
+                                        let recipientAfter = Math.round(await database.getAmount(recipientID) + (await database.getAmount(msg.author.id) / 10));
+
+                                        // Write data to JSON.
+                                        database.setBalance(msg.author, accountAfter, await database.getLastClaimed(msg.author.id), await database.getPrivateStatus(msg.author.id));
+                                        database.setBalance(api.client.users.get(recipientID), recipientAfter, await database.getLastClaimed(recipientID), await database.getPrivateStatus(recipientID));
+
+                                        // Send message.
                                         msg.channel.send({embed: {
-                                            title: ":x: Pay",
-                                            description: "You do not have enough Cash for that action.",
+                                            title: ":x: Pickpocket",
+                                            description: `You failed to pickpocket ${api.client.users.get(recipientID).username} and they got 10% of your money.`,
                                             thumbnail: {
                                                 url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
                                             }
                                         }});
-    
+                                        
                                         // Logs in console.
-                                        console.log(colors.red(`${msg.author.username} didn't have enough Cash to run the pay command.`));
+                                        console.log(colors.green(`${msg.author.username} pickpocketed ${api.client.users.get(recipientID).username} and failed.`));
                                     }
                                 }else {
                                     // Sends message.
                                     msg.channel.send({embed: {
-                                        title: ":x: Pay",
-                                        description: "You cannot pay negative numbers nor zero.",
+                                        title: ":x: Pickpocket",
+                                        description: `${api.client.users.get(recipientID).username} has nothing to pickpocket from.`,
                                         thumbnail: {
                                             url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
                                         }
                                     }});
-    
+
                                     // Logs in console.
-                                    console.log(colors.red(`${msg.author.username} gave a negative number or zero for the pay command.`));
+                                    console.log(colors.red(`${api.client.users.get(recipientID).username} didn't have enough Cash to get pickpocketed from ${msg.author.username} command.`));
                                 }
                             }else {
                                 // Sends message.
                                 msg.channel.send({embed: {
-                                    title: ":x: Pay",
-                                    description: `${args[1]} is not a valid number.`,
+                                    title: ":x: Pickpocket",
+                                    description: "You do not have enough Cash for that action.",
                                     thumbnail: {
                                         url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
                                     }
                                 }});
-    
+
                                 // Logs in console.
-                                console.log(colors.red(`${msg.author.username} gave an invalid number for the pay command.`));
+                                console.log(colors.red(`${msg.author.username} didn't have enough Cash to run the fiftyfifty command.`));
                             }
                         }else {
                             // Sends message.
                             msg.channel.send({embed: {
-                                title: ":x: Pay",
-                                description: "You cannot pay yourself.",
+                                title: ":x: Pickpocket",
+                                description: "You cannot pickpocket yourself.",
                                 thumbnail: {
                                     url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
                                 }
                             }});
 
                             // Logs in console.
-                            console.log(colors.red(`${msg.author.username} tried to pay themself.`));
+                            console.log(colors.red(`${msg.author.username} tried to pickpocket themself.`));
                         }
                     }else {
                         // Sends message.
                         msg.channel.send({embed: {
-                            title: ":x: Pay",
+                            title: ":x: Pickpocket",
                             description: `${api.client.users.get(recipientID).username}'s account is privated.`,
                             thumbnail: {
                                 url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
@@ -110,18 +113,18 @@ exports.onLoad = api => {
                         }});
 
                         // Logs in console.
-                        console.log(colors.red(`${api.client.users.get(recipientID).username} didn't recieve a payment from ${msg.author.username} because their account was privated.`));
+                        console.log(colors.red(`${msg.author.username} couldn't pickpocket ${api.client.users.get(recipientID).username} because their account is privated.`));
                     }
                 }else {
                     // Sends message.
                     msg.channel.send({embed: {
-                        title: ":x: Pay",
+                        title: ":x: Pickpocket",
                         description: `${api.client.users.get(recipientID).username} does not have an account.`,
                         thumbnail: {
                             url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
                         }
                     }});
-    
+
                     // Logs in console.
                     console.log(colors.red(`${api.client.users.get(recipientID).username} didn't have an account to recieve a payment from ${msg.author.username}.`));
                 }
@@ -141,7 +144,7 @@ exports.onLoad = api => {
         }else {
             // Sends message.
             msg.channel.send({embed: {
-                title: ":x: Pay",
+                title: ":x: Pickpocket",
                 description: "You do not have an account, use `$new` to create a new account.",
                 thumbnail: {
                     url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
