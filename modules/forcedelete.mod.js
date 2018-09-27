@@ -6,12 +6,13 @@ exports.id = "forcedelete";
 exports.onLoad = api => {
     api.commands.add("forcedelete", (msg) => {
         let args = msg.content.substring(13).split(" ");
-        let recipientID = args[0];
+        let recipientID = args[0].replace("<", "");
+        recipientID = recipientID.replace("!", "");
+        recipientID = recipientID.replace("@", "");
+        recipientID = recipientID.replace(">", "");
 
         if(database.isOwner(msg.author.id)) {
             database.deleteAccount(recipientID);
-
-            console.log(recipientID)
 
             // Sends message.
             msg.channel.send({embed: {
