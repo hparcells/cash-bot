@@ -113,9 +113,9 @@ exports.onLoad = api => {
                                     }else {
                                         // Sets multiplier.
                                         if(theMatches === 2) {
-                                            multiplier = 5;
+                                            multiplier = 2;
                                         }else if(theMatches === 3) {
-                                            multiplier = 25;
+                                            multiplier = 5;
                                         }
 
                                         let amountWon = bet * multiplier;
