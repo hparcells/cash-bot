@@ -24,7 +24,7 @@ exports.onLoad = api => {
                 // Sends message.
                 msg.channel.send({embed: {
                     title: ":white_check_mark: Add Money",
-                    description: `You gave ${payment} to ${api.client.users.get(recipientID).username}!`,
+                    description: `You gave **${payment} Cash** to ${api.client.users.get(recipientID).username}!`,
                     thumbnail: {
                         url: "https://sometag.org/_assets/emoji/twitter/white-heavy-check-mark_2705.png"
                     }
