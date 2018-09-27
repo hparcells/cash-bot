@@ -44,5 +44,9 @@ module.exports = {
         let nextClaimTime = lastClaimed + 86400000;
 
         return nextClaimTime - parseInt(Date.now());
+    },
+
+    isOwner(authorID) {
+        return authorID === "481810179218997266";
     }
 }
