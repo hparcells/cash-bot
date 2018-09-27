@@ -99,7 +99,7 @@ exports.onLoad = api => {
                                             }
                                         }});
     
-                                        let accountAfter = await database.getAmount(msg.author.id) - (bet * 2);
+                                        let accountAfter = await database.getAmount(msg.author.id) + (bet * 2);
     
                                         database.setBalance(msg.author, accountAfter, await database.getLastClaimed(msg.author.id), await database.getPrivateStatus(msg.author.id));
                                         
