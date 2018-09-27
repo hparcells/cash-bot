@@ -186,7 +186,7 @@ exports.onLoad = api => {
                 }});
 
                 // Logs in console.
-                console.log(colors.red(`[Bot] ${msg.author.username} gave an invalid for the slots command.`));
+                console.log(colors.red(`[Bot] ${msg.author.username} gave an invalid number for the slots command.`));
             }
         }else {
             // Sends message.
