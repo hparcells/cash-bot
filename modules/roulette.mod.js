@@ -2,7 +2,7 @@ const colors = require("colors");
 const database = require("../database");
 
 function isEven(number) {
-	return number % 2 == 0;
+	return number % 2 === 0;
 }
 
 exports.id = "roulette";
