@@ -43,7 +43,7 @@ exports.onLoad = api => {
 				}});
                 
 				// Logs in console.
-				console.log(colors.green(`[Bot] ${api.client.users.get(recipientID).username} did not have an account to receive money.`));
+				console.log(colors.red(`[Bot] ${api.client.users.get(recipientID).username} did not have an account to receive money.`));
 			}
 		}else {
 			// Sends message.
@@ -56,7 +56,7 @@ exports.onLoad = api => {
 			}});
             
 			// Logs in console.
-			console.log(colors.green(`[Bot] ${msg.author.username} did not have permission to run the addmoney command.`));
+			console.log(colors.red(`[Bot] ${msg.author.username} did not have permission to run the addmoney command.`));
 		}
 	});
 };
