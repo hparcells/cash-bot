@@ -17,7 +17,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "pm2 start cashBot.js"
+    "start": "pm2 start cashBot.js",
+    "stop": "pm2 stop cashBot.js"
   },
   "author": "Hunter Parcells",
   "license": "MIT",
