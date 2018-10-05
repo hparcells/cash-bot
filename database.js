@@ -1,5 +1,5 @@
 const r = require("rethinkdb");
-const rethink = require("./index");
+const rethink = require("./cashBot");
 
 module.exports = {
     async hasAccount(id) {
