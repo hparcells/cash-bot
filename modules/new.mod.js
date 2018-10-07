@@ -15,7 +15,7 @@ exports.onLoad = api => {
 				title: ":white_check_mark: New Account",
 				description: "You have successfully created your new account. You have been given **10 Cash** to start with.",
 				thumbnail: {
-					url: "https://sometag.org/_assets/emoji/twitter/white-heavy-check-mark_2705.png"
+					url: "https://images.emojiterra.com/twitter/512px/2705.png"
 				}
 			}});
 
@@ -27,7 +27,7 @@ exports.onLoad = api => {
 				title: ":x: New Account",
 				description: "You already have an account.",
 				thumbnail: {
-					url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+					url: "https://images.emojiterra.com/twitter/512px/274c.png"
 				}
 			}});
 

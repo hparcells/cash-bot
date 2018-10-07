@@ -26,7 +26,7 @@ exports.onLoad = api => {
 					title: ":white_check_mark: Remove Money",
 					description: `You removed **${payment} Cash** from ${api.client.users.get(recipientID).username}!`,
 					thumbnail: {
-						url: "https://sometag.org/_assets/emoji/twitter/white-heavy-check-mark_2705.png"
+						url: "https://images.emojiterra.com/twitter/512px/2705.png"
 					}
 				}});
 
@@ -38,7 +38,7 @@ exports.onLoad = api => {
 					title: ":x: Remove Money",
 					description: `${api.client.users.get(recipientID).username} does not have an account.`,
 					thumbnail: {
-						url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+						url: "https://images.emojiterra.com/twitter/512px/274c.png"
 					}
 				}});
                 
@@ -51,7 +51,7 @@ exports.onLoad = api => {
 				title: ":x: Remove Money",
 				description: "You do not have permission to run this command",
 				thumbnail: {
-					url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+					url: "https://images.emojiterra.com/twitter/512px/274c.png"
 				}
 			}});
             

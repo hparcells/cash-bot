@@ -25,7 +25,7 @@ exports.onLoad = api => {
 				title: ":lock: Private",
 				description: "You have privated your account.",
 				thumbnail: {
-					url: "https://png2.kisspng.com/20180511/rrw/kisspng-emoji-padlock-troy-email-5af611386fc727.2510723615260757044579.png"
+					url: "https://images.emojiterra.com/twitter/512px/1f512.png"
 				}
 			}});
 

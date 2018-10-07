@@ -29,7 +29,7 @@ exports.onLoad = api => {
 				title: ":x: Stats",
 				description: "You do not have permission to run this command.",
 				thumbnail: {
-					url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+					url: "https://images.emojiterra.com/twitter/512px/274c.png"
 				}
 			}});
             

@@ -48,7 +48,7 @@ exports.onLoad = api => {
 				title: ":x: Your Daily Cash",
 				description: "You do not have an account, use `$new` to create a new account.",
 				thumbnail: {
-					url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+					url: "https://images.emojiterra.com/twitter/512px/274c.png"
 				}
 			}});
 

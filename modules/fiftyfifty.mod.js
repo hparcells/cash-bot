@@ -32,7 +32,7 @@ exports.onLoad = api => {
 								title: ":white_check_mark: Fifty Fifty",
 								description: `You won the 50/50 and got **${bet} Cash**`,
 								thumbnail: {
-									url: "https://sometag.org/_assets/emoji/twitter/white-heavy-check-mark_2705.png"
+									url: "https://images.emojiterra.com/twitter/512px/2705.png"
 								}
 							}});
 
@@ -49,7 +49,7 @@ exports.onLoad = api => {
 								title: ":x: Fifty Fifty",
 								description: `You lost the 50/50 and lost **${bet} Cash**`,
 								thumbnail: {
-									url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+									url: "https://images.emojiterra.com/twitter/512px/274c.png"
 								}
 							}});
 
@@ -63,7 +63,7 @@ exports.onLoad = api => {
 							title: ":x: Fifty Fifty",
 							description: "You do not have enough Cash for that action.",
 							thumbnail: {
-								url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+								url: "https://images.emojiterra.com/twitter/512px/274c.png"
 							}
 						}});
 
@@ -76,7 +76,7 @@ exports.onLoad = api => {
 						title: ":x: Fifty Fifty",
 						description: "You cannot bet negative numbers nor zero.",
 						thumbnail: {
-							url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+							url: "https://images.emojiterra.com/twitter/512px/274c.png"
 						}
 					}});
 
@@ -89,7 +89,7 @@ exports.onLoad = api => {
 					title: ":x: Fifty Fifty",
 					description: `${msg.content.substring(12)} is not a number.`,
 					thumbnail: {
-						url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+						url: "https://images.emojiterra.com/twitter/512px/274c.png"
 					}
 				}});
 
@@ -102,7 +102,7 @@ exports.onLoad = api => {
 				title: ":x: Fifty Fifty",
 				description: "You do not have an account, use `$new` to create a new account.",
 				thumbnail: {
-					url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+					url: "https://images.emojiterra.com/twitter/512px/274c.png"
 				}
 			}});
 

@@ -37,7 +37,7 @@ exports.onLoad = api => {
 											title: ":white_check_mark: Pickpocket",
 											description: `You successfully pickpocketed ${api.client.users.get(recipientID).username} and got 10% of their money.`,
 											thumbnail: {
-												url: "https://sometag.org/_assets/emoji/twitter/white-heavy-check-mark_2705.png"
+												url: "https://images.emojiterra.com/twitter/512px/2705.png"
 											}
 										}});
         
@@ -56,7 +56,7 @@ exports.onLoad = api => {
 											title: ":x: Pickpocket",
 											description: `You failed to pickpocket ${api.client.users.get(recipientID).username} and they got 10% of your money.`,
 											thumbnail: {
-												url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+												url: "https://images.emojiterra.com/twitter/512px/274c.png"
 											}
 										}});
                                         
@@ -69,7 +69,7 @@ exports.onLoad = api => {
 										title: ":x: Pickpocket",
 										description: `${api.client.users.get(recipientID).username} has nothing to pickpocket from.`,
 										thumbnail: {
-											url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+											url: "https://images.emojiterra.com/twitter/512px/274c.png"
 										}
 									}});
 
@@ -82,7 +82,7 @@ exports.onLoad = api => {
 									title: ":x: Pickpocket",
 									description: "You do not have enough Cash for that action.",
 									thumbnail: {
-										url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+										url: "https://images.emojiterra.com/twitter/512px/274c.png"
 									}
 								}});
 
@@ -95,7 +95,7 @@ exports.onLoad = api => {
 								title: ":x: Pickpocket",
 								description: "You cannot pickpocket yourself.",
 								thumbnail: {
-									url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+									url: "https://images.emojiterra.com/twitter/512px/274c.png"
 								}
 							}});
 
@@ -108,7 +108,7 @@ exports.onLoad = api => {
 							title: ":x: Pickpocket",
 							description: `${api.client.users.get(recipientID).username}'s account is privated.`,
 							thumbnail: {
-								url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+								url: "https://images.emojiterra.com/twitter/512px/274c.png"
 							}
 						}});
 
@@ -121,7 +121,7 @@ exports.onLoad = api => {
 						title: ":x: Pickpocket",
 						description: `${api.client.users.get(recipientID).username} does not have an account.`,
 						thumbnail: {
-							url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+							url: "https://images.emojiterra.com/twitter/512px/274c.png"
 						}
 					}});
 
@@ -134,7 +134,7 @@ exports.onLoad = api => {
 					title: ":x: Pay",
 					description: `${args[0]} is not valid, try using a mention.`,
 					thumbnail: {
-						url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+						url: "https://images.emojiterra.com/twitter/512px/274c.png"
 					}
 				}});
 
@@ -147,7 +147,7 @@ exports.onLoad = api => {
 				title: ":x: Pickpocket",
 				description: "You do not have an account, use `$new` to create a new account.",
 				thumbnail: {
-					url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+					url: "https://images.emojiterra.com/twitter/512px/274c.png"
 				}
 			}});
 

@@ -73,7 +73,7 @@ exports.onLoad = api => {
 												value: number
 											}],
 											thumbnail: {
-												url: "https://sometag.org/_assets/emoji/twitter/white-heavy-check-mark_2705.png"
+												url: "https://images.emojiterra.com/twitter/512px/2705.png"
 											}
 										}});
     
@@ -95,7 +95,7 @@ exports.onLoad = api => {
 												value: number
 											}],
 											thumbnail: {
-												url: "https://sometag.org/_assets/emoji/twitter/white-heavy-check-mark_2705.png"
+												url: "https://images.emojiterra.com/twitter/512px/2705.png"
 											}
 										}});
     
@@ -118,7 +118,7 @@ exports.onLoad = api => {
 											value: number
 										}],
 										thumbnail: {
-											url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+											url: "https://images.emojiterra.com/twitter/512px/274c.png"
 										}
 									}});
     
@@ -136,7 +136,7 @@ exports.onLoad = api => {
 								title: ":x: Roulette",
 								description: "You do not have enough Cash for that action.",
 								thumbnail: {
-									url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+									url: "https://images.emojiterra.com/twitter/512px/274c.png"
 								}
 							}});
 
@@ -149,7 +149,7 @@ exports.onLoad = api => {
 							title: ":x: Roulette",
 							description: "You cannot bet negative numbers nor zero.",
 							thumbnail: {
-								url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+								url: "https://images.emojiterra.com/twitter/512px/274c.png"
 							}
 						}});
 
@@ -162,7 +162,7 @@ exports.onLoad = api => {
 						title: ":x: Roulette",
 						description: `${args[1]} is an invalid number.`,
 						thumbnail: {
-							url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+							url: "https://images.emojiterra.com/twitter/512px/274c.png"
 						}
 					}});
 
@@ -175,7 +175,7 @@ exports.onLoad = api => {
 					title: ":x: Roulette",
 					description: `${args[0]} is not a color. Please use \`red\`, \`black\` or \`green\``,
 					thumbnail: {
-						url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+						url: "https://images.emojiterra.com/twitter/512px/274c.png"
 					}
 				}});
 
@@ -188,7 +188,7 @@ exports.onLoad = api => {
 				title: ":x: Roulette",
 				description: "You do not have an account, use `$new` to create a new account.",
 				thumbnail: {
-					url: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Fxemoji_u274C.svg/1024px-Fxemoji_u274C.svg.png"
+					url: "https://images.emojiterra.com/twitter/512px/274c.png"
 				}
 			}});
 
