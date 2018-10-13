@@ -21,7 +21,7 @@
     "stop": "pm2 stop cashBot.js"
   },
   "author": "Hunter Parcells",
-  "license": "MIT",
+  "license": "GPL-3.0-only",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hparcells/CashBot.git"
