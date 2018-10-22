@@ -8,6 +8,7 @@
 [![GitHub pull requests](https://img.shields.io/github/issues-pr/hparcells/CashBot.svg)](https://github.com/hparcells/CashBot)
 [![GitHub](https://img.shields.io/github/license/hparcells/CashBot.svg)](https://github.com/hparcells/CashBot)
 
+[![dependencies Status](https://david-dm.org/hparcells/CashBot/status.svg)](https://david-dm.org/hparcells/CashBot)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/e0ac122dc2264a5981c230d749fc18bb)](https://www.codacy.com/app/hparcells/CashBot?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=hparcells/CashBot&amp;utm_campaign=Badge_Grade)
 
 A discord bot for money and gambling.
