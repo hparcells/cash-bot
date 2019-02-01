@@ -2,7 +2,7 @@
 [![Discord Bots](https://discordbots.org/api/widget/487411926008201246.png)](https://discordbots.org/bot/487411926008201246)
 
 ![status](https://img.shields.io/badge/status-complete-brightgreen.svg)
-![maintained](https://img.shields.io/badge/maintained-yes-brightgreen.svg)
+![maintained](https://img.shields.io/badge/maintained-no%20(as%20of%202019)-red.svg)
 
 [![GitHub issues](https://img.shields.io/github/issues/hparcells/CashBot.svg)](https://github.com/hparcells/CashBot)
 [![GitHub pull requests](https://img.shields.io/github/issues-pr/hparcells/CashBot.svg)](https://github.com/hparcells/CashBot)
