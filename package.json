@@ -1,0 +1,35 @@
+{
+  "name": "cash-bot",
+  "version": "3.0.0",
+  "description": "A discord bot for money and gambling.",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "npm run build && node dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hparcells/cash-bot.git"
+  },
+  "author": "Hunter Parcells",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hparcells/cash-bot/issues"
+  },
+  "homepage": "https://github.com/hparcells/cash-bot#readme",
+  "dependencies": {
+    "discord-akairo": "^7.5.6",
+    "dotenv": "^8.2.0",
+    "log-type": "^1.0.0",
+    "rethinkdb": "^2.4.2"
+  },
+  "devDependencies": {
+    "@types/node": "^13.1.7",
+    "@types/rethinkdb": "^2.3.14",
+    "prettier": "^1.19.1",
+    "tslint": "^5.20.1",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.7.5",
+    "typescript-tslint-plugin": "^0.5.5"
+  }
+}
