@@ -2,7 +2,7 @@ import r, { Operation } from 'rethinkdb';
 
 import { dbLog } from './utils/logger';
 
-const DB_NAME = 'count_bot';
+const DB_NAME = 'cash_bot';
 
 export let connection: r.Connection;
 
@@ -40,7 +40,8 @@ export async function connectToDatabase() {
     }
   }
 
-  await createTable('numbers', {}, []);
+  await createTable('accounts', {}, []);
+  await createTable('guildSettings', {}, []);
 
   dbLog('Database setup.');
 }
