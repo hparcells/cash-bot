@@ -13,7 +13,8 @@ connectToDatabase();
 // Create a client instance.
 export const client = new AkairoClient({
   prefix: '$',
-  commandDirectory: './dist/commands/'
+  commandDirectory: './dist/commands/',
+  ownerID: '481810179218997266'
 }, {});
 
 // Login using the token.

@@ -7,7 +7,6 @@ import ensureAccount from '../utils/ensure-account';
 import { Account, EmbedImage } from '../types';
 
 import { DEFAULT_EMEBED_COLOR, DEFAULT_CURRENCY } from '../defaults';
-import { client } from '..';
 
 class WalletCommand extends Command {
   constructor() {
