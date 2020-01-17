@@ -3,4 +3,6 @@ export const DEFAULT_STARTING_AMOUNT = 20;
 export const DEFAULT_DAILY_AMOUNT = 20;
 export const DEFAULT_DAILY_INCREMENT = 10;
 
+export const DEFAULT_PRIVATE_STATUS = false;
+
 export const DEFAULT_CURRENCY = 'Cash';

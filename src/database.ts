@@ -40,7 +40,7 @@ export async function connectToDatabase() {
     }
   }
 
-  await createTable('accounts', {}, []);
+  await createTable('accounts', {}, ['user', 'server']);
   await createTable('guildSettings', {}, []);
 
   dbLog('Database setup.');

@@ -15,7 +15,7 @@ class PingCommand extends Command {
   async exec(message: Message) {
     // Send the first message.
     const sent = await message.channel.send({embed: {
-      title: 'Ponging in Process',
+      title: ':ping_pong: Ponging in Process',
       description: 'Ponging...',
       thumbnail: {
         url: EmbedImage.PingPong

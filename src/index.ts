@@ -11,7 +11,7 @@ setupEnv();
 connectToDatabase();
 
 // Create a client instance.
-const client = new AkairoClient({
+export const client = new AkairoClient({
   prefix: '$',
   commandDirectory: './dist/commands/'
 }, {});
