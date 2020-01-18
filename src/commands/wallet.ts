@@ -2,9 +2,9 @@ import { Command } from 'discord-akairo';
 import { Message } from 'discord.js';
 
 import { runDb, db } from '../database';
-import ensureAccount from '../utils/ensure-account';
+import { ensureUserAccount } from '../utils/ensure';
 
-import { Account, EmbedImage } from '../types';
+import { Account, EmbedImage, GuildSettings } from '../types';
 
 import { DEFAULT_EMEBED_COLOR, DEFAULT_CURRENCY } from '../defaults';
 
@@ -17,7 +17,10 @@ class WalletCommand extends Command {
 
   async exec(message: Message) {
     // Make sure the user has an account
-    await ensureAccount(message.author.id, message.guild.id);
+    await ensureUserAccount(message.author.id, message.guild.id);
+
+    // Get the guild settings.
+    const guildSettings: GuildSettings = await runDb(db().table('guildSettings').get(message.guild.id));
 
     // Get the account.
     const account: Account = await runDb(db().table('accounts').get(`${message.author.id}-${message.guild.id}`));
@@ -25,12 +28,12 @@ class WalletCommand extends Command {
 
     // Send message.
     return message.channel.send({embed: {
-      title: 'Your Cash',
-      description: `You have ${cash} ${DEFAULT_CURRENCY} in ${message.guild.name}.`,
+      title: 'Your Wallet',
+      description: `You have ${cash} ${guildSettings?.currency || DEFAULT_CURRENCY} in ${message.guild.name}.`,
       thumbnail: {
         url: EmbedImage.MoneyBag
       },
-      color: DEFAULT_EMEBED_COLOR
+      color: guildSettings?.embedColor || DEFAULT_EMEBED_COLOR
     }});
   }
 }

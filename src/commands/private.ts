@@ -2,7 +2,7 @@ import { Command } from 'discord-akairo';
 import { Message } from 'discord.js';
 
 import { runDb, db } from '../database';
-import ensureAccount from '../utils/ensure-account';
+import { ensureUserAccount } from '../utils/ensure';
 
 import { Account, EmbedImage } from '../types';
 
@@ -17,7 +17,7 @@ class PrivateCommand extends Command {
 
   async exec(message: Message) {
     // Make sure the user has an account
-    await ensureAccount(message.author.id, message.guild.id);
+    await ensureUserAccount(message.author.id, message.guild.id);
 
     // Get the account.
     const account: Account = await runDb(db().table('accounts').get(`${message.author.id}-${message.guild.id}`));
@@ -30,7 +30,7 @@ class PrivateCommand extends Command {
       // Send message.
       return message.channel.send({embed: {
         title: ':lock: Private',
-        description: `You have privated your account.`,
+        description: `You have privated your account in ${message.guild.name}.`,
         thumbnail: {
           url: EmbedImage.Lock
         },
@@ -41,7 +41,7 @@ class PrivateCommand extends Command {
     // Send message.
     return message.channel.send({embed: {
       title: ':unlock: Private',
-      description: `You have publicised your account.`,
+      description: `You have publicised your account in ${message.guild.name}.`,
       thumbnail: {
         url: EmbedImage.Unlock
       },

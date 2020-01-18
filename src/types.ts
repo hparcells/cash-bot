@@ -28,14 +28,19 @@ interface GuildDailyOptions {
 }
 
 /** Guild customization options. */
-export interface GuildSettings {
+interface BotGuildSettings {
+  /** The guild ID. */
+  id: string;
   /** The currency name. */
   currency: string;
   /** The embed color. */
   embedColor: number;
   /** Daily cash options. */
   dailyOptions: GuildDailyOptions;
+  /** THe ID of the role that can run maintainer commands. */
+  maintainerRole: string;
 }
+export type GuildSettings = BotGuildSettings | null;
 
 export enum EmbedImage {
   PingPong = 'https://images.emojiterra.com/twitter/v12/512px/1f3d3.png',

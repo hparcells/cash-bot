@@ -1,7 +1,9 @@
 import { Command } from 'discord-akairo';
 import { Message } from 'discord.js';
 
-import { EmbedImage } from '../types';
+import { runDb, db } from '../database';
+
+import { EmbedImage, GuildSettings } from '../types';
 
 import { DEFAULT_EMEBED_COLOR } from '../defaults';
 
@@ -13,6 +15,9 @@ class PingCommand extends Command {
   }
 
   async exec(message: Message) {
+    // Get the guild settings.
+    const guildSettings: GuildSettings = await runDb(db().table('guildSettings').get(message.guild.id));
+
     // Send the first message.
     const sent = await message.channel.send({embed: {
       title: ':ping_pong: Ponging in Process',
@@ -20,7 +25,7 @@ class PingCommand extends Command {
       thumbnail: {
         url: EmbedImage.PingPong
       },
-      color: DEFAULT_EMEBED_COLOR
+      color: guildSettings?.embedColor || DEFAULT_EMEBED_COLOR
     }}) as Message;
 
     // Get the difference between the two.
@@ -33,7 +38,7 @@ class PingCommand extends Command {
       thumbnail: {
         url: EmbedImage.PingPong
       },
-      color: DEFAULT_EMEBED_COLOR
+      color: guildSettings?.embedColor || DEFAULT_EMEBED_COLOR
     }});
   }
 }
