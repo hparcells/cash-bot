@@ -26,7 +26,7 @@ class SetupCommand extends Command {
     return message.member.roles.some((role) => {
       return role.name === 'Cash Bot Setup';
     });
-  }
+  };
 
   async exec(message: Message, args: any) {
     // Get the guild settings.
@@ -37,31 +37,41 @@ class SetupCommand extends Command {
     maintainerRole = maintainerRole.replace('<@&', '');
     maintainerRole = maintainerRole.replace('>', '');
 
-    if(!message.guild.roles.some((role) => {
-      return role.id === maintainerRole;
-    })) {
-      return await message.channel.send({embed: {
-        title: 'Cash Bot Maintainer Setup',
-        description: 'The provided role does not exist.',
-        thumbnail: {
-          url: EmbedImage.X
-        },
-        color: guildSettings?.embedColor || DEFAULT_EMBED_COLOR
-      }});
+    if (
+      !message.guild.roles.some((role) => {
+        return role.id === maintainerRole;
+      })
+    ) {
+      return await message.channel.send({
+        embed: {
+          title: 'Cash Bot Maintainer Setup',
+          description: 'The provided role does not exist.',
+          thumbnail: {
+            url: EmbedImage.X
+          },
+          color: guildSettings?.embedColor || DEFAULT_EMBED_COLOR
+        }
+      });
     }
 
     await ensureGuildSettings(message.guild.id);
-    await database.collection('accounts').updateOne({ id: message.guild.id }, { $set: { maintainerRole } });
+    await database
+      .collection('accounts')
+      .updateOne({ id: message.guild.id }, { $set: { maintainerRole } });
 
     // Send message.
-    return await message.channel.send({embed: {
-      title: 'Cash Bot Maintainer Setup',
-      description: `Success! ${message.guild.roles.get(maintainerRole)?.name} has been set as the maintainer role.`,
-      thumbnail: {
-        url: EmbedImage.Check
-      },
-      color: guildSettings?.embedColor || DEFAULT_EMBED_COLOR
-    }});
+    return await message.channel.send({
+      embed: {
+        title: 'Cash Bot Maintainer Setup',
+        description: `Success! ${
+          message.guild.roles.get(maintainerRole)?.name
+        } has been set as the maintainer role.`,
+        thumbnail: {
+          url: EmbedImage.Check
+        },
+        color: guildSettings?.embedColor || DEFAULT_EMBED_COLOR
+      }
+    });
   }
 }
 

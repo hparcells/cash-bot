@@ -18,7 +18,7 @@ import {
  */
 export async function ensureUserAccount(id: string, guild: string) {
   // Check if the person has a number yet.
-  if(!await accountExists(id, guild)) {
+  if (!(await accountExists(id, guild))) {
     // Add to database.
     database.collection('accounts').insertOne({
       id,
@@ -37,7 +37,7 @@ export async function ensureUserAccount(id: string, guild: string) {
  */
 export async function ensureGuildSettings(guildId: string) {
   // Check if the server has settings yet.
-  if(!await guildExists(guildId)) {
+  if (!(await guildExists(guildId))) {
     // Acc to database.
     database.collection('guilds').insertOne({
       id: guildId,

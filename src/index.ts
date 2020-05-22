@@ -11,11 +11,14 @@ setupEnv();
 connectToDatabase();
 
 // Create a client instance.
-export const client = new AkairoClient({
-  prefix: '$',
-  commandDirectory: './dist/commands/',
-  ownerID: '481810179218997266'
-}, {});
+export const client = new AkairoClient(
+  {
+    prefix: '$',
+    commandDirectory: './dist/commands/',
+    ownerID: '481810179218997266'
+  },
+  {}
+);
 
 // Login using the token.
 client.login(process.env.TOKEN as string);
@@ -29,7 +32,7 @@ const activitiesList = [
   '$help'
 ];
 
-// Change activites every 30 seconds.
+// Change activities every 30 seconds.
 setInterval(() => {
   const index = Math.floor(Math.random() * (activitiesList.length - 1) + 1);
   client.user.setActivity(activitiesList[index]);

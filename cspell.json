@@ -1,0 +1,12 @@
+{
+    "version": "0.1",
+    "ignoreWords": [
+        "akairo",
+        "cashbotcluster",
+        "dalies",
+        "hparcells",
+        "parcells",
+        "privated",
+        "publicised"
+    ]
+}

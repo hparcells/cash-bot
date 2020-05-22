@@ -26,14 +26,18 @@ class WalletCommand extends Command {
     const account: Account = await getAccount(message.author.id, message.guild.id);
 
     // Send message.
-    return message.channel.send({embed: {
-      title: 'Your Wallet',
-      description: `You have ${account?.cash} ${guildSettings?.currency || DEFAULT_CURRENCY} in ${message.guild.name}.`,
-      thumbnail: {
-        url: EmbedImage.MoneyBag
-      },
-      color: guildSettings?.embedColor || DEFAULT_EMBED_COLOR
-    }});
+    return message.channel.send({
+      embed: {
+        title: 'Your Wallet',
+        description: `You have ${account?.cash} ${guildSettings?.currency || DEFAULT_CURRENCY} in ${
+          message.guild.name
+        }.`,
+        thumbnail: {
+          url: EmbedImage.MoneyBag
+        },
+        color: guildSettings?.embedColor || DEFAULT_EMBED_COLOR
+      }
+    });
   }
 }
 

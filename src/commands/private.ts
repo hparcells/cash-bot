@@ -26,29 +26,38 @@ class PrivateCommand extends Command {
     const guildSettings: Guild = await getGuild(message.guild.id);
 
     // Update the user.
-    await database.collection('accounts').updateOne({ id: message.author.id, guild: message.guild.id }, { $set: { private: !account?.private } });
+    await database
+      .collection('accounts')
+      .updateOne(
+        { id: message.author.id, guild: message.guild.id },
+        { $set: { private: !account?.private } }
+      );
 
-    if(!account.private) {
+    if (!account.private) {
       // Send message.
-      return await message.channel.send({embed: {
-        title: ':lock: Private',
-        description: `You have privated your account in ${message.guild.name}.`,
-        thumbnail: {
-          url: EmbedImage.Lock
-        },
-        color: guildSettings?.embedColor || DEFAULT_EMBED_COLOR
-      }});
+      return await message.channel.send({
+        embed: {
+          title: ':lock: Private',
+          description: `You have privated your account in ${message.guild.name}.`,
+          thumbnail: {
+            url: EmbedImage.Lock
+          },
+          color: guildSettings?.embedColor || DEFAULT_EMBED_COLOR
+        }
+      });
     }
 
     // Send message.
-    return await message.channel.send({embed: {
-      title: ':unlock: Private',
-      description: `You have publicised your account in ${message.guild.name}.`,
-      thumbnail: {
-        url: EmbedImage.Unlock
-      },
-      color: guildSettings?.embedColor || DEFAULT_EMBED_COLOR
-    }});
+    return await message.channel.send({
+      embed: {
+        title: ':unlock: Private',
+        description: `You have publicised your account in ${message.guild.name}.`,
+        thumbnail: {
+          url: EmbedImage.Unlock
+        },
+        color: guildSettings?.embedColor || DEFAULT_EMBED_COLOR
+      }
+    });
   }
 }
 

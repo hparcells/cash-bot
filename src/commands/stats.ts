@@ -21,27 +21,34 @@ class StatsCommand extends Command {
     const guildSettings: Guild = await getGuild(message.guild.id);
 
     // Send message.
-    return await message.channel.send({embed: {
-      title: 'Stats',
-      description: 'Statistics of Cash Bot',
-      fields: [{
-        name: 'Servers',
-        value: client.guilds.size
-      }, {
-        name: 'Users',
-        value: client.users.size
-      }, {
-        name: 'Channels',
-        value: client.channels.size
-      }, {
-        name: 'Memory Usage',
-        value: `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`
-      }],
-      thumbnail: {
-        url: EmbedImage.MoneyBag
-      },
-      color: guildSettings?.embedColor || DEFAULT_EMBED_COLOR
-    }});
+    return await message.channel.send({
+      embed: {
+        title: 'Stats',
+        description: 'Statistics of Cash Bot',
+        fields: [
+          {
+            name: 'Servers',
+            value: client.guilds.size
+          },
+          {
+            name: 'Users',
+            value: client.users.size
+          },
+          {
+            name: 'Channels',
+            value: client.channels.size
+          },
+          {
+            name: 'Memory Usage',
+            value: `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`
+          }
+        ],
+        thumbnail: {
+          url: EmbedImage.MoneyBag
+        },
+        color: guildSettings?.embedColor || DEFAULT_EMBED_COLOR
+      }
+    });
   }
 }
 

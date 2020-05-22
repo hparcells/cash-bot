@@ -6,7 +6,7 @@ export interface Account {
   guild: string;
   /** The amount of cash this account as for a server. */
   cash: number;
-   /** Is the account private to block viewing and stealing. */
+  /** Is the account private to block viewing and stealing. */
   private: boolean;
   /** How many dalies in a row the user has collected. */
   dailyStreak: number;

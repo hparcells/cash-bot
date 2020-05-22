@@ -19,27 +19,31 @@ class PingCommand extends Command {
     const guildSettings: Guild = await getGuild(message.guild.id);
 
     // Send the first message.
-    const sent = await message.channel.send({embed: {
-      title: ':ping_pong: Ponging in Process',
-      description: 'Ponging...',
-      thumbnail: {
-        url: EmbedImage.PingPong
-      },
-      color: guildSettings?.embedColor || DEFAULT_EMBED_COLOR
-    }}) as Message;
+    const sent = (await message.channel.send({
+      embed: {
+        title: ':ping_pong: Ponging in Process',
+        description: 'Ponging...',
+        thumbnail: {
+          url: EmbedImage.PingPong
+        },
+        color: guildSettings?.embedColor || DEFAULT_EMBED_COLOR
+      }
+    })) as Message;
 
     // Get the difference between the two.
     const timeDiff = sent.createdAt.valueOf() - message.createdAt.valueOf();
 
     // Update message.
-    return sent.edit({embed: {
-      title: ':ping_pong: Pong!',
-      description: `${timeDiff} ms`,
-      thumbnail: {
-        url: EmbedImage.PingPong
-      },
-      color: guildSettings?.embedColor || DEFAULT_EMBED_COLOR
-    }});
+    return sent.edit({
+      embed: {
+        title: ':ping_pong: Pong!',
+        description: `${timeDiff} ms`,
+        thumbnail: {
+          url: EmbedImage.PingPong
+        },
+        color: guildSettings?.embedColor || DEFAULT_EMBED_COLOR
+      }
+    });
   }
 }
 
