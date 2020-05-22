@@ -7,11 +7,3 @@ import { log } from 'log-type';
 export function botLog(message: string) {
   log('[Bot]', 'green', message);
 }
-
-/**
- * Logs a message with the database prefix.
- * @param message The message to log.
- */
-export function dbLog(message: string) {
-  log('[Database]', 'blue', message);
-}

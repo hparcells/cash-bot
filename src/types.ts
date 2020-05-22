@@ -1,9 +1,7 @@
 /** Accounts stored by the bot. */
-interface BotAccount {
-  /** The ID handled my me. */
-  id: string;
+export interface Account {
   /** User ID. */
-  user: string;
+  id: string;
   /** Server ID. */
   guild: string;
   /** The amount of cash this account as for a server. */
@@ -15,7 +13,6 @@ interface BotAccount {
   /** Timestamp of when the last daily was collected. */
   lastDaily: number;
 }
-export type Account = BotAccount | null;
 
 /** Daily cash options. */
 interface GuildDailyOptions {
@@ -28,7 +25,7 @@ interface GuildDailyOptions {
 }
 
 /** Guild customization options. */
-interface BotGuildSettings {
+export interface Guild {
   /** The guild ID. */
   id: string;
   /** The currency name. */
@@ -38,9 +35,8 @@ interface BotGuildSettings {
   /** Daily cash options. */
   dailyOptions: GuildDailyOptions;
   /** THe ID of the role that can run maintainer commands. */
-  maintainerRole: string;
+  maintainerRole?: string;
 }
-export type GuildSettings = BotGuildSettings | null;
 
 export enum EmbedImage {
   PingPong = 'https://images.emojiterra.com/twitter/v12/512px/1f3d3.png',

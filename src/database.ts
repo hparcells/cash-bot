@@ -1,61 +1,31 @@
-import r, { Operation } from 'rethinkdb';
+import { MongoClient, Db } from 'mongodb';
 
-import { dbLog } from './utils/logger';
+import { Account, Guild } from './types';
 
-const DB_NAME = 'cash_bot';
-
-export let connection: r.Connection;
+export let database: Db;
 
 /** Connects to the database and sets everything up. */
-export async function connectToDatabase() {
-  connection = await r.connect({ host: 'localhost', port: 28015 });
+export function connectToDatabase() {
+  const CONNECTION_URL = `mongodb+srv://hparcells:${process.env.DATABASE_PASSWORD}@cashbotcluster-6o98e.mongodb.net/test?retryWrites=true&w=majority`
+  const client = new MongoClient(CONNECTION_URL, { useNewUrlParser: true });
 
-  // Check if the database exists. If not, create it.
-  if(!(await r.dbList().run(connection)).includes(DB_NAME)) {
-    await r.dbCreate(DB_NAME).run(connection);
-    dbLog(`Created database "${DB_NAME}".`);
-  }
-
-  /**
-   * Creates a table in the database/
-   * @param name The name of the table.
-   * @param options Additional options.
-   * @param secondaryIndexes Secondary indexes.
-   */
-  async function createTable(name: string, options: r.TableOptions, secondaryIndexes: string[]) {
-    const existingTables = await r.db(DB_NAME).tableList().run(connection);
-
-    if(!existingTables.includes(name)) {
-      const tableQuery = r.db(DB_NAME).tableCreate(name, ...[options].filter((x) => x));
-      await tableQuery.run(connection);
-      dbLog(`Created table "${name}".`);
-
-      if(secondaryIndexes) {
-        await Promise.all(
-          secondaryIndexes.map((index: string) => {
-            return r.db(DB_NAME).table(name).indexCreate(index).run(connection);
-          })
-        );
-      }
-    }
-  }
-
-  await createTable('accounts', {}, ['user', 'server']);
-  await createTable('guildSettings', {}, []);
-
-  dbLog('Database setup.');
+  client.connect(() => {
+    database = client.db("cashBot");
+  });
 }
-/** Selects the database. */
-export function db() {
-  return r.db(DB_NAME);
+export async function accountExists(id: string, guild: string): Promise<boolean> {
+  return await database.collection('accounts').find({ id, guild }).count() === 1;
 }
-/**
- * Runs an operation on the database with error handling.
- * @param operation The database operation to run.
- */
-export async function runDb<T>(operation: Operation<T>): Promise<T> {
-  if (!connection) {
-    throw new Error('Connection not established. Please Wait.');
-  }
-  return operation.run(connection);
+export async function guildExists(id: string): Promise<boolean> {
+  return await database.collection('guilds').find({ id }).count() === 1;
+}
+export async function getAccount(id: string, guild: string): Promise<Account> {
+  const accounts: Account[] = await database.collection('accounts').find({ id, guild }).toArray();
+
+  return accounts[0];
+}
+export async function getGuild(id: string): Promise<Guild> {
+  const guilds: Guild[] = await database.collection('guilds').find({ id }).toArray();
+
+  return guilds[0];
 }

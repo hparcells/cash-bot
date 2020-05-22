@@ -1,11 +1,11 @@
 import { Command } from 'discord-akairo';
 import { Message } from 'discord.js';
 
-import { runDb, db } from '../database';
+import { getGuild } from '../database';
 
-import { EmbedImage, GuildSettings } from '../types';
+import { EmbedImage, Guild } from '../types';
 
-import { DEFAULT_EMEBED_COLOR } from '../defaults';
+import { DEFAULT_EMBED_COLOR } from '../defaults';
 
 class PingCommand extends Command {
   constructor() {
@@ -16,7 +16,7 @@ class PingCommand extends Command {
 
   async exec(message: Message) {
     // Get the guild settings.
-    const guildSettings: GuildSettings = await runDb(db().table('guildSettings').get(message.guild.id));
+    const guildSettings: Guild = await getGuild(message.guild.id);
 
     // Send the first message.
     const sent = await message.channel.send({embed: {
@@ -25,7 +25,7 @@ class PingCommand extends Command {
       thumbnail: {
         url: EmbedImage.PingPong
       },
-      color: guildSettings?.embedColor || DEFAULT_EMEBED_COLOR
+      color: guildSettings?.embedColor || DEFAULT_EMBED_COLOR
     }}) as Message;
 
     // Get the difference between the two.
@@ -38,7 +38,7 @@ class PingCommand extends Command {
       thumbnail: {
         url: EmbedImage.PingPong
       },
-      color: guildSettings?.embedColor || DEFAULT_EMEBED_COLOR
+      color: guildSettings?.embedColor || DEFAULT_EMBED_COLOR
     }});
   }
 }

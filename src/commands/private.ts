@@ -1,12 +1,12 @@
 import { Command } from 'discord-akairo';
 import { Message } from 'discord.js';
 
-import { runDb, db } from '../database';
+import { getAccount, database, getGuild } from '../database';
 import { ensureUserAccount } from '../utils/ensure';
 
-import { Account, EmbedImage } from '../types';
+import { Account, Guild, EmbedImage } from '../types';
 
-import { DEFAULT_EMEBED_COLOR } from '../defaults';
+import { DEFAULT_EMBED_COLOR } from '../defaults';
 
 class PrivateCommand extends Command {
   constructor() {
@@ -20,32 +20,34 @@ class PrivateCommand extends Command {
     await ensureUserAccount(message.author.id, message.guild.id);
 
     // Get the account.
-    const account: Account = await runDb(db().table('accounts').get(`${message.author.id}-${message.guild.id}`));
-    const privateStatus = account?.private;
+    const account: Account = await getAccount(message.author.id, message.guild.id);
+
+    // Get the guild settings.
+    const guildSettings: Guild = await getGuild(message.guild.id);
 
     // Update the user.
-    await runDb(db().table('accounts').get(`${message.author.id}-${message.guild.id}`).update({ private: !privateStatus }));
+    await database.collection('accounts').updateOne({ id: message.author.id, guild: message.guild.id }, { $set: { private: !account?.private } });
 
-    if(!privateStatus) {
+    if(!account.private) {
       // Send message.
-      return message.channel.send({embed: {
+      return await message.channel.send({embed: {
         title: ':lock: Private',
         description: `You have privated your account in ${message.guild.name}.`,
         thumbnail: {
           url: EmbedImage.Lock
         },
-        color: DEFAULT_EMEBED_COLOR
+        color: guildSettings?.embedColor || DEFAULT_EMBED_COLOR
       }});
     }
 
     // Send message.
-    return message.channel.send({embed: {
+    return await message.channel.send({embed: {
       title: ':unlock: Private',
       description: `You have publicised your account in ${message.guild.name}.`,
       thumbnail: {
         url: EmbedImage.Unlock
       },
-      color: DEFAULT_EMEBED_COLOR
+      color: guildSettings?.embedColor || DEFAULT_EMBED_COLOR
     }});
   }
 }

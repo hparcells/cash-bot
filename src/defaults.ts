@@ -1,4 +1,4 @@
-export const DEFAULT_EMEBED_COLOR = 0x24A0FF;
+export const DEFAULT_EMBED_COLOR = 0x24A0FF;
 export const DEFAULT_STARTING_AMOUNT = 20;
 export const DEFAULT_DAILY_AMOUNT = 20;
 export const DEFAULT_DAILY_INCREMENT = 10;

@@ -1,11 +1,12 @@
 import { Command } from 'discord-akairo';
 import { Message } from 'discord.js';
 
-import { EmbedImage } from '../types';
+import { EmbedImage, Guild } from '../types';
 
-import { DEFAULT_EMEBED_COLOR } from '../defaults';
+import { DEFAULT_EMBED_COLOR } from '../defaults';
 
 import { client } from '..';
+import { getGuild } from '../database';
 
 class StatsCommand extends Command {
   constructor() {
@@ -15,9 +16,12 @@ class StatsCommand extends Command {
     });
   }
 
-  exec(message: Message) {
+  async exec(message: Message) {
+    // Get the guild settings.
+    const guildSettings: Guild = await getGuild(message.guild.id);
+
     // Send message.
-    return message.channel.send({embed: {
+    return await message.channel.send({embed: {
       title: 'Stats',
       description: 'Statistics of Cash Bot',
       fields: [{
@@ -36,7 +40,7 @@ class StatsCommand extends Command {
       thumbnail: {
         url: EmbedImage.MoneyBag
       },
-      color: DEFAULT_EMEBED_COLOR
+      color: guildSettings?.embedColor || DEFAULT_EMBED_COLOR
     }});
   }
 }

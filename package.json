@@ -22,11 +22,11 @@
     "discord.js": "^11.5.1",
     "dotenv": "^8.2.0",
     "log-type": "^1.0.0",
-    "rethinkdb": "^2.4.2"
+    "mongodb": "^3.5.7"
   },
   "devDependencies": {
+    "@types/mongodb": "^3.5.18",
     "@types/node": "^13.1.7",
-    "@types/rethinkdb": "^2.3.14",
     "prettier": "^1.19.1",
     "tslint": "^5.20.1",
     "tslint-config-prettier": "^1.18.0",

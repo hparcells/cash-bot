@@ -1,11 +1,11 @@
 import { Command } from 'discord-akairo';
 import { Message } from 'discord.js';
 
-import { runDb, db } from '../database';
+import { getGuild, database } from '../database';
 
-import { EmbedImage, GuildSettings } from '../types';
+import { EmbedImage, Guild } from '../types';
 
-import { DEFAULT_EMEBED_COLOR } from '../defaults';
+import { DEFAULT_EMBED_COLOR } from '../defaults';
 import { ensureGuildSettings } from '../utils/ensure';
 
 class SetupCommand extends Command {
@@ -30,7 +30,7 @@ class SetupCommand extends Command {
 
   async exec(message: Message, args: any) {
     // Get the guild settings.
-    const guildSettings: GuildSettings = await runDb(db().table('guildSettings').get(message.guild.id));
+    const guildSettings: Guild = await getGuild(message.guild.id);
 
     let maintainerRole: string = args.maintainerRole;
 
@@ -40,26 +40,27 @@ class SetupCommand extends Command {
     if(!message.guild.roles.some((role) => {
       return role.id === maintainerRole;
     })) {
-      return message.channel.send({embed: {
+      return await message.channel.send({embed: {
         title: 'Cash Bot Maintainer Setup',
         description: 'The provided role does not exist.',
         thumbnail: {
           url: EmbedImage.X
         },
-        color: guildSettings?.embedColor || DEFAULT_EMEBED_COLOR
+        color: guildSettings?.embedColor || DEFAULT_EMBED_COLOR
       }});
     }
 
-    ensureGuildSettings(message.guild.id, maintainerRole);
+    await ensureGuildSettings(message.guild.id);
+    await database.collection('accounts').updateOne({ id: message.guild.id }, { $set: { maintainerRole } });
 
     // Send message.
-    return message.channel.send({embed: {
+    return await message.channel.send({embed: {
       title: 'Cash Bot Maintainer Setup',
       description: `Success! ${message.guild.roles.get(maintainerRole)?.name} has been set as the maintainer role.`,
       thumbnail: {
         url: EmbedImage.Check
       },
-      color: guildSettings?.embedColor || DEFAULT_EMEBED_COLOR
+      color: guildSettings?.embedColor || DEFAULT_EMBED_COLOR
     }});
   }
 }

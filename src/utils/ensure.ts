@@ -1,11 +1,11 @@
-import { runDb, db } from '../database';
+import { database, accountExists, guildExists } from '../database';
 
-import { Account, GuildSettings } from '../types';
+import { Account, Guild } from '../types';
 import {
   DEFAULT_STARTING_AMOUNT,
   DEFAULT_PRIVATE_STATUS,
   DEFAULT_CURRENCY,
-  DEFAULT_EMEBED_COLOR,
+  DEFAULT_EMBED_COLOR,
   DEFAULT_DAILY_AMOUNT,
   DEFAULT_DAILY_INCREMENT,
   DEFAULT_DO_DAILY_STREAK
@@ -13,22 +13,21 @@ import {
 
 /**
  * Ensures that an account exists for a user in the database.
- * @param authorId The ID of the account holder.
- * @param initialGuildId The guild ID where this account is first being generated.
+ * @param id The ID of the account holder.
+ * @param guild The guild ID where this account is first being generated.
  */
-export async function ensureUserAccount(authorId: string, initialGuildId: string) {
+export async function ensureUserAccount(id: string, guild: string) {
   // Check if the person has a number yet.
-  if(!(await runDb(db().table('accounts').getAll(`${authorId}-${initialGuildId}`).count().eq(1)))) {
-    // Acc to database.
-    await runDb(db().table('accounts').insert({
-      id: `${authorId}-${initialGuildId}`,
-      user: authorId,
-      guild: initialGuildId,
+  if(!await accountExists(id, guild)) {
+    // Add to database.
+    database.collection('accounts').insertOne({
+      id,
+      guild,
       cash: DEFAULT_STARTING_AMOUNT,
       private: DEFAULT_PRIVATE_STATUS,
       dailyStreak: 0,
       lastDaily: 0
-    } as Account));
+    } as Account);
   }
 }
 
@@ -36,22 +35,19 @@ export async function ensureUserAccount(authorId: string, initialGuildId: string
  * Ensures that guild settings exist for a guild.
  * @param guildId The guild ID.
  */
-export async function ensureGuildSettings(guildId: string, maintainerRole: string) {
+export async function ensureGuildSettings(guildId: string) {
   // Check if the server has settings yet.
-  if(!(await runDb(db().table('guildSettings').getAll(guildId).count().eq(1)))) {
+  if(!await guildExists(guildId)) {
     // Acc to database.
-    await runDb(db().table('guildSettings').insert({
+    database.collection('guilds').insertOne({
       id: guildId,
       currency: DEFAULT_CURRENCY,
-      embedColor: DEFAULT_EMEBED_COLOR,
+      embedColor: DEFAULT_EMBED_COLOR,
       dailyOptions: {
         dailyAmount: DEFAULT_DAILY_AMOUNT,
         doDailyStreak: DEFAULT_DO_DAILY_STREAK,
         dailyStreakIncrement: DEFAULT_DAILY_INCREMENT
-      },
-      maintainerRole
-    } as GuildSettings));
+      }
+    } as Guild);
   }
-
-  await runDb(db().table('guildSettings').get(guildId).update({ maintainerRole }));
 }
