@@ -11,7 +11,7 @@
     "fs": "0.0.1-security",
     "fs-nextra": "^0.3.7",
     "nekrawsd-money-api": "^2.0.1",
-    "pm2": "^3.2.2",
+    "pm2": "^3.5.2",
     "reputation-core": "^1.0.6",
     "rethinkdb": "^2.3.3"
   },
